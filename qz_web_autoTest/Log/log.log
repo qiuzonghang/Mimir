@@ -1,0 +1,25 @@
+[DEBUG 2022-07-29 14:30:24]This is debug message
+[INFO 2022-07-29 14:30:24]This is info message
+[WARNING 2022-07-29 14:30:24]This is warning message
+[ERROR 2022-07-29 14:30:24]This is error
+[CRITICAL 2022-07-29 14:30:24]This is critical message
+[INFO 2022-07-29 15:11:17]open chrome...
+[INFO 2022-07-29 15:11:26]打开url，窗口最大化，隐式等待15s
+[INFO 2022-07-29 15:14:26]-----------start-----------
+[INFO 2022-07-29 15:14:31]open firefox
+[INFO 2022-07-29 15:14:43]打开url，窗口最大化，隐式等待15s
+[INFO 2022-07-29 15:15:02]-------------end-------------
+[INFO 2022-07-29 15:17:30]------------start-----------
+[INFO 2022-07-29 15:17:30]目前仅支持Chrome/Firefox
+[INFO 2022-07-29 15:18:36]------------start-----------
+[INFO 2022-07-29 15:18:36]目前仅支持Chrome/Firefox
+-------------end-------------
+[INFO 2022-07-29 15:43:44]------------start-----------
+[INFO 2022-07-29 15:43:49]open firefox
+[INFO 2022-07-29 15:44:11]打开url，窗口最大化，隐式等待15s
+[INFO 2022-07-29 15:44:26]-------------end-------------
+[INFO 2022-07-29 16:17:18]------------start-----------
+[INFO 2022-07-29 16:17:23]open firefox
+[INFO 2022-07-29 16:17:33]打开url，窗口最大化，隐式等待15s
+[INFO 2022-07-29 16:18:02]-------------end-------------
+[INFO 2022-07-29 16:43:33]正在定位://span[@class='home-header-username ant-dropdown-trigger ant-dropdown-open']元素
