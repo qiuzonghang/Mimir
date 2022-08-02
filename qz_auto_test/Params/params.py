@@ -3,10 +3,10 @@
 # @Author : qiuzonghang
 # @File   : params.py
 
-from qz_auto_test.Common.Func import get_access_token
-from qz_auto_test.Common.Log import MyLog
-from qz_auto_test.Conf.Config import Config
-from qz_auto_test.Params.get_yaml import GetPages
+from Mimir.qz_auto_test.Common.Func import get_access_token
+from Mimir.qz_auto_test.Common.Log import MyLog
+from Mimir.qz_auto_test.Conf.Config import Config
+from Mimir.qz_auto_test.Params.get_yaml import GetPages
 
 log = MyLog()
 conf = Config()

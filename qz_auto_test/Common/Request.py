@@ -8,7 +8,7 @@ import random
 import requests
 import json
 from retrying import retry
-from qz_auto_test.Common.Log import MyLog
+from Mimir.qz_auto_test.Common.Log import MyLog
 
 log = MyLog()
 

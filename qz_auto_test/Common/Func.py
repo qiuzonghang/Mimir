@@ -8,11 +8,11 @@ import time
 import selenium.common.exceptions
 from selenium.webdriver.common.by import By
 # from selenium import webdriver
-from qz_auto_test.Common.Log import MyLog
+from Mimir.qz_auto_test.Common.Log import MyLog
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from seleniumwire import webdriver
-from qz_auto_test.Conf.Config import Config
+from Mimir.qz_auto_test.Conf.Config import Config
 import os
 import requests
 import re

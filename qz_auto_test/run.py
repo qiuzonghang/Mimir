@@ -6,9 +6,9 @@
 import pytest
 import os
 
-from qz_auto_test.Common import Log, Shell
-from qz_auto_test.Conf import Config
-from qz_auto_test.Common.Func import remove_dir
+from Mimir.qz_auto_test.Common import Log, Shell
+from Mimir.qz_auto_test.Conf import Config
+from Mimir.qz_auto_test.Common.Func import remove_dir
 
 if __name__ == '__main__':
     conf = Config.Config()

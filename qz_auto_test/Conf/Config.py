@@ -7,7 +7,7 @@ import os
 import sys
 
 from configparser import ConfigParser
-from qz_auto_test.Common import Log
+from Mimir.qz_auto_test.Common import Log
 
 
 class Config:
