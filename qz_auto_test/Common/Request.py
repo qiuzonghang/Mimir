@@ -8,6 +8,9 @@ import random
 import requests
 import json
 from retrying import retry
+from qz_auto_test.Common.Log import MyLog
+
+log = MyLog()
 
 
 class Request:
@@ -31,9 +34,9 @@ class Request:
         # print(url)
         try:
             response = requests.get(url=url, headers=header)
-
+            log.info('url：{}\nheaders：{}'.format(url, header))
         except requests.RequestException as e:
-            print('%s%s' % ('RequestException url: ', url))
+            log.error('%s%s' % ('RequestException url: ', url))
             print(e)
             return ()
 
@@ -46,7 +49,10 @@ class Request:
             return ()
         time_consuming = response.elapsed.microseconds / 1000
         time_total = response.elapsed.total_seconds()
-
+        response_dict = {}
         response_json = json.loads(response.text)
-        return response_json
+        response_dict['body'] = response_json
+        response_dict['code'] = response.status_code
+        # response_dict['jyzz_start_class'] = response_json.get
+        return response_dict
 

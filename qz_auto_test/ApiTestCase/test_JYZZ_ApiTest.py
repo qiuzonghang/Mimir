@@ -8,8 +8,12 @@ import allure
 import requests
 
 from qz_auto_test.Common.Request import Request
+from qz_auto_test.Common.Log import MyLog
+from qz_auto_test.Common.Assert import Assertions
 
 request = Request()
+log = MyLog()
+test = Assertions()
 
 
 @pytest.mark.usefixtures('get_JYZZ_param')
@@ -28,7 +32,12 @@ class TestCase:
         url = host + '&'.join(data_list) + '测试'
         header = {'authorization': get_JYZZ_param['token']}
         r = request.get_request(url=url, header=header)
+        log.info(str(r))
         print(r)
+        with allure.step('校验结果'):
+            allure.attach(str(r.get('body').get('data')), '实际结果')
+            allure.attach('含有“测试”关键词的开课名称及对应教师', '预期结果')
+        test.assert_code(200, r['code'])
 
 
 if __name__ == '__main__':

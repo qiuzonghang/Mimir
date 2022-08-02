@@ -1,3 +1,4 @@
 [ERROR 2022-07-31 16:14:33]This is error
 [ERROR 2022-07-31 21:37:42]元素定位超时！
 [ERROR 2022-08-02 14:46:56]元素定位超时！
+[ERROR 2022-08-02 16:59:11]statusCode error, expected_code is 200, statusCode is 20 

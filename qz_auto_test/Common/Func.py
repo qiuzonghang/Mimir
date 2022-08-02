@@ -16,6 +16,7 @@ from qz_auto_test.Conf.Config import Config
 import os
 import requests
 import re
+import shutil
 
 log = MyLog()
 project_path = os.path.abspath(os.path.dirname(
@@ -192,5 +193,13 @@ def get_access_token(username, password, url, env):
     else:
         return re.sub('\n', '', read_txt()[-1]), host       # 文件中的token
 
+
+def remove_dir(filepath):
+    log.info('对上一次测试报告进行清理')
+    if not os.path.exists(filepath):
+        os.mkdir(filepath)
+    else:
+        shutil.rmtree(filepath)
+        os.mkdir(filepath)
 
 # print(get_access_token(username='tester1@qynet.onmicrosoft.com', password='Qz123456.'))

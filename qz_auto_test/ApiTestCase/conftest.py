@@ -4,7 +4,9 @@
 # @File   : conftest.py
 
 from qz_auto_test.Params.params import get_param_data
+from qz_auto_test.Common.Func import remove_dir
 import pytest
+import os
 
 
 @pytest.fixture(scope='class')
