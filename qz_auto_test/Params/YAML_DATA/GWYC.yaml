@@ -1,0 +1,20 @@
+---
+GWYC:
+  dec: "公务用车"
+  parameters:
+    -
+      apply_url: /api/GSMJYZZApply/Apply
+      apply_data:
+           applyCount: 10
+           applyNo: ''
+           className: ''
+           classTeacher: ''
+           departmentId: 0
+           departmentName: ''
+           endClassDate: ''
+           id: 0
+           sourceOfFunds: ''
+           startClassDate: ''
+           startClassId: ''
+           startClassMoudle: ''
+           startClassName: ''

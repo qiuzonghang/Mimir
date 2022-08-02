@@ -1,0 +1,28 @@
+---
+JYZZ:
+  dec: "讲义制作"
+  parameters:
+    -
+      apply_url: /api/GSMJYZZApply/Apply
+      apply_data:
+           applyCount: 10
+           applyNo: ''
+           className: ''
+           classTeacher: ''
+           departmentId: 0
+           departmentName: ''
+           endClassDate: ''
+           id: 0
+           sourceOfFunds: ''
+           startClassDate: ''
+           startClassId: ''
+           startClassMoudle: ''
+           startClassName: ''
+
+      start_class_url: /api/GSMJYZZApply/GetGSMStartClass?
+      start_class_data:
+          Name: ''
+
+      school_roll_class_url: /api/GSMJYZZApply/GetGSMSchoolRollClass?
+      school_roll_class_data:
+          Name: ''
