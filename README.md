@@ -1,4 +1,4 @@
-# 接口自动化介绍:
+# qz_auto_test接口自动化介绍:
 -ApiTestCase：接口测试用例    
 -Common：封装方法（例：断言、requests、log等等）    
 -Conf：环境变量配置  
