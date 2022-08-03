@@ -149,13 +149,14 @@ def check_token(access_token, user, host):
     url = 'https://' + host + '/api/user/info'
     header = {'authorization': access_token}
     r = requests.get(url=url, headers=header)
+    # print(r.text)
     try:
         if r.status_code == 200 and r.json().get('data').get('email') == user:
-            return True
+            return True, r.json()
         else:
-            return False
+            return False, {}
     except:
-        return False
+        return False, {}
 
 
 # 登录token获取
@@ -175,7 +176,8 @@ def get_access_token(username, password, url, env):
         host = ''
     else:
         raise
-    if check_token(re.sub('\n', '', read_txt()[-1]), username, host) is False:      # 检查token是否正确
+    run_type, user_info = check_token(re.sub('\n', '', read_txt()[-1]), username, host)
+    if run_type is False:      # 检查token是否正确
         dr = base.start_dr(url=url, driver_name='chrome')   # open chrome
         base.user_login(username, password)     # login
         time.sleep(5)
@@ -186,12 +188,13 @@ def get_access_token(username, password, url, env):
                     break
         log.info('获取token，退出浏览器...')
         dr.quit()
-        if check_token(re.sub('\n', '', read_txt()[-1]), username, host):   # 登录后获取的token是否正确
-            return re.sub('\n', '', read_txt()[-1]), host
+        run_type, user_info = check_token(re.sub('\n', '', read_txt()[-1]), username, host)
+        if run_type:   # 登录后获取的token是否正确
+            return re.sub('\n', '', read_txt()[-1]), host, user_info
         else:
             raise 'Get Token Error!'
     else:
-        return re.sub('\n', '', read_txt()[-1]), host       # 文件中的token
+        return re.sub('\n', '', read_txt()[-1]), host, user_info      # 文件中的token
 
 
 def remove_dir(filepath):
@@ -202,4 +205,4 @@ def remove_dir(filepath):
         shutil.rmtree(filepath)
         os.mkdir(filepath)
 
-# print(get_access_token(username='tester1@qynet.onmicrosoft.com', password='Qz123456.'))
+# print(get_access_token(username='wangye@qynet.onmicrosoft.com', password='Welcome@1', url='https://devsite.qintelligence.cn/#/work', env='dev'))

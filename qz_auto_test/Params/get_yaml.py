@@ -9,6 +9,7 @@ import os.path
 
 def parse():
     path_ya = str(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))) + '/Params/YAML_DATA'
+    # print(path_ya)
     pages = {}
     for root, dirs, files in os.walk(path_ya):
         for name in files:

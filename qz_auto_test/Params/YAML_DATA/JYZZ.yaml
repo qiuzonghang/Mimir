@@ -9,14 +9,14 @@ JYZZ:
            applyNo: ''
            className: ''
            classTeacher: ''
-           departmentId: 0
-           departmentName: ''
+           departmentId: 4
+           departmentName: 'EMBA中心'
            endClassDate: ''
            id: 0
-           sourceOfFunds: ''
+           sourceOfFunds: '接口自动化测试'
            startClassDate: ''
            startClassId: ''
-           startClassMoudle: ''
+           startClassMoudle: '接口自动化测试'
            startClassName: ''
 
       start_class_url: /api/GSMJYZZApply/GetGSMStartClass?
@@ -26,3 +26,16 @@ JYZZ:
       school_roll_class_url: /api/GSMJYZZApply/GetGSMSchoolRollClass?
       school_roll_class_data:
           Name: ''
+
+      get_list_url: /api/GSMJYZZApply/GetGSMSchoolRollClass?
+      get_list_data:
+          pageNo: 0
+          orderBy: 'creationTime'
+          sort: 'desc'
+          queryText: ''
+          conModels:
+            -
+              fieldName: 'creatorId'
+              fieldValue: ''
+              conditionalType: 0
+          pageSize: 10
