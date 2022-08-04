@@ -43,5 +43,15 @@ def get_JYZZ_apply_param(origin_param, result_param):
     return origin_param
 
 
+def check_sort(results):
+    for num in range(len(results)):
+        if re.sub('JYZZ', '', results[num].get('applyNo')) == re.sub('JYZZ', '', results[-1].get('applyNo')):
+            break
+        elif int(re.sub('JYZZ', '', results[num].get('applyNo'))) < int(re.sub('JYZZ', '', results[num+1].get('applyNo'))):
+            return False
+    return True
+
+
+# print(check_sort(a))
 # parameter = get_param_data(uri_type='JYZZ', user='wangye@qynet.onmicrosoft.com', pw='Welcome@1')
 # print(parameter)

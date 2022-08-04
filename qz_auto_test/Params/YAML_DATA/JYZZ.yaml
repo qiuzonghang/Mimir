@@ -13,10 +13,10 @@ JYZZ:
            departmentName: 'EMBA中心'
            endClassDate: ''
            id: 0
-           sourceOfFunds: '接口自动化测试'
+           sourceOfFunds: '自动化测试切勿操作'
            startClassDate: ''
            startClassId: ''
-           startClassMoudle: '接口自动化测试'
+           startClassMoudle: '自动化测试切勿操作'
            startClassName: ''
 
       start_class_url: /api/GSMJYZZApply/GetGSMStartClass?
@@ -27,7 +27,7 @@ JYZZ:
       school_roll_class_data:
           Name: ''
 
-      get_list_url: /api/GSMJYZZApply/GetGSMSchoolRollClass?
+      get_list_url: /api/GSMJYZZApply/GetList
       get_list_data:
           pageNo: 0
           orderBy: 'creationTime'
@@ -38,4 +38,15 @@ JYZZ:
               fieldName: 'creatorId'
               fieldValue: ''
               conditionalType: 0
+          pageSize: 10
+
+      add_paper_url: /api/GSMJYZZDic
+      add_paper_data:
+          id: 0
+          type: ''
+          name: ''
+          value: 0
+      query_paper_data:
+          pageNo: 0
+          type: ''
           pageSize: 10

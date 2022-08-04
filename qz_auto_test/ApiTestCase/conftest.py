@@ -7,6 +7,7 @@ from Mimir.qz_auto_test.Params.params import get_param_data
 from qz_auto_test.Common.Func import remove_dir
 import pytest
 import os
+import pymssql
 
 
 @pytest.fixture(scope='class')
@@ -18,3 +19,11 @@ def get_JYZZ_param():
     # return JYZZ_param
 
 
+@pytest.fixture(scope='class')
+def get_dev_sql_server():
+    conn = pymssql.connect('118.178.93.112', 'cx', '1qaz2wsx!QAZ@WSX', 'GSMDB')
+    cur = conn.cursor()
+    yield cur
+    conn.commit()
+    cur.close()
+    conn.close()

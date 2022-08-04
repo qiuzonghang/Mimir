@@ -180,26 +180,20 @@ class Assertions:
 
             raise
 
-    def assert_slots_text(self, body, expected_msg):
+    def assert_type(self, content_type, error_info):
         """
-                验证response body中是否期字符串
-                :param body:
-                :param expected_msg:
-                :return:
-                """
+        验证response body中任意属性的值
+        :param body:
+        :param body_msg:
+        :param expected_msg:为喂！
+        :return:
+        """
         try:
-            expected_msg_list = expected_msg.split('|')
-            body_list = body.split('|')
-            for body_str in body_list:
-                if body_str in expected_msg_list:
-                    pass
-                else:
-                    raise
-            # assert expected_msg not in body
+            assert content_type
             return True
 
         except:
-            self.log.error("Response expected_msg not in body, expected_msg is %s, body is %s" % (expected_msg, body))
+            self.log.error(error_info)
             Consts.RESULT_LIST.append('fail')
 
             raise

@@ -60,6 +60,8 @@ class Request:
         if not url.startswith('https://'):
             url = '%s%s' % ('https://', url)
         data_json = json.dumps(data)
+        # print(data_json)
+        # print(url)
         try:
             response = requests.post(url=url, data=data_json, headers=header)
             log.info('url：{}\ndata：{}\nheaders：{}'.format(url, data_json, header))
@@ -71,10 +73,42 @@ class Request:
         except Exception as e:
             print('%s%s' % ('Exception url: ', url))
             print(e)
-            return False
+            raise
         if response.status_code != 200:
             print('status code %s!!!' % response.status_code)
-            return ()
+            log.info('status code %s!!!' % response.status_code)
+            raise
+        time_consuming = response.elapsed.microseconds / 1000
+        time_total = response.elapsed.total_seconds()
+        response_dict = {}
+        response_json = json.loads(response.text)
+        response_dict['body'] = response_json
+        response_dict['code'] = response.status_code
+        # response_dict['jyzz_start_class'] = response_json.get
+        return response_dict
+
+    def put_request(self, url, header, data):
+        if not url.startswith('https://'):
+            url = '%s%s' % ('https://', url)
+        data_json = json.dumps(data)
+        # print(data_json)
+        # print(url)
+        try:
+            response = requests.put(url=url, data=data_json, headers=header)
+            log.info('url：{}\ndata：{}\nheaders：{}'.format(url, data_json, header))
+        except requests.RequestException as e:
+            log.error('%s%s' % ('RequestException url: ', url))
+            print(e)
+            return False
+
+        except Exception as e:
+            print('%s%s' % ('Exception url: ', url))
+            print(e)
+            raise
+        if response.status_code != 200:
+            print('status code %s!!!' % response.status_code)
+            log.info('status code %s!!!' % response.status_code)
+            raise
         time_consuming = response.elapsed.microseconds / 1000
         time_total = response.elapsed.total_seconds()
         response_dict = {}
