@@ -49,4 +49,4 @@ JYZZ:
       query_paper_data:
           pageNo: 0
           type: ''
-          pageSize: 10
+          pageSize: 100

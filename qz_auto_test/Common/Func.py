@@ -125,17 +125,30 @@ class LoginClass:
 
 
 # 写txt文件
-def write_txt(text):
-    with open(project_path + '/Data/token.txt', 'a', encoding='utf-8') as f:
+def write_txt(text, user_name=''):
+    file_path = project_path + '/Data/token.txt'
+    if user_name != '':
+        user = user_name.split('@')
+        file_path = project_path + '/Data/%s_token.txt' % user[0]
+    with open(file_path, 'w', encoding='utf-8') as f:
         f.writelines(text + '\n')
         f.close()
 
 
 # 读txt文件
-def read_txt(file_path=project_path + '/Data/token.txt'):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        txt_result = f.readlines()
-        return txt_result
+def read_txt(file_path=project_path + '/Data/token.txt', user_name=''):
+    if user_name != '':
+        user = user_name.split('@')
+        file_path = project_path + '/Data/%s_token.txt' % user[0]
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            txt_result = f.readlines()
+            return txt_result
+    except FileNotFoundError:
+        write_txt(text='test', user_name=user_name)
+        with open(file_path, 'r', encoding='utf-8') as f:
+            txt_result = f.readlines()
+            return txt_result
 
 
 # 检查token是否过期、是否与登录账号一致
@@ -176,7 +189,7 @@ def get_access_token(username, password, url, env):
         host = ''
     else:
         raise
-    run_type, user_info = check_token(re.sub('\n', '', read_txt()[-1]), username, host)
+    run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username)[-1]), username, host)
     if run_type is False:      # 检查token是否正确
         dr = base.start_dr(url=url, driver_name='chrome')   # open chrome
         base.user_login(username, password)     # login
@@ -184,17 +197,17 @@ def get_access_token(username, password, url, env):
         for request in dr.requests:     # 登录后获取token
             if request.response:
                 if 'Bearer' in str(request.headers['authorization']):
-                    write_txt(str(request.headers['authorization']))
+                    write_txt(str(request.headers['authorization']), user_name=username)
                     break
         log.info('获取token，退出浏览器...')
         dr.quit()
-        run_type, user_info = check_token(re.sub('\n', '', read_txt()[-1]), username, host)
+        run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username)[-1]), username, host)
         if run_type:   # 登录后获取的token是否正确
-            return re.sub('\n', '', read_txt()[-1]), host, user_info
+            return re.sub('\n', '', read_txt(user_name=username)[-1]), host, user_info
         else:
             raise 'Get Token Error!'
     else:
-        return re.sub('\n', '', read_txt()[-1]), host, user_info      # 文件中的token
+        return re.sub('\n', '', read_txt(user_name=username)[-1]), host, user_info      # 文件中的token
 
 
 def remove_dir(filepath):
@@ -204,5 +217,3 @@ def remove_dir(filepath):
     else:
         shutil.rmtree(filepath)
         os.mkdir(filepath)
-
-# print(get_access_token(username='wangye@qynet.onmicrosoft.com', password='Welcome@1', url='https://devsite.qintelligence.cn/#/work', env='dev'))

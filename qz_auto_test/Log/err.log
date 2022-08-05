@@ -16,3 +16,13 @@
 [ERROR 2022-08-04 15:45:04]Response body Does not contain expected_msg, expected_msg is (186, None, UUID('c5cd4322-5e03-4f9d-8859-6752e899b686'), '王野', datetime.datetime(2022, 8, 4, 15, 44, 55, 63000), None, None, 'JYZZ20220060', '4', 'EMBA中心', 'c5cd4322-5e03-4f9d-8859-6752e899b686', '王野', '45', '2088年test2老师的班级01', '自动化测试切勿操作', '测试课程名', None, '2022-08-04', '2022-08-04', '自动化测试切勿操作', None, None, 50, None, None, False, None, None, None, None, None, None, None, None, None, None, '1', False), body is 50
 [ERROR 2022-08-04 17:19:11]元素定位超时！
 [ERROR 2022-08-04 17:37:13]Response body != expected_msg, expected_msg is 972, body is 972
+[ERROR 2022-08-05 09:35:01]Response body Does not contain expected_msg, expected_msg is 120, body is 71
+[ERROR 2022-08-05 09:36:00]Response body Does not contain expected_msg, expected_msg is 120, body is 71
+[ERROR 2022-08-05 10:24:15]Response body Does not contain expected_msg, expected_msg is 120, body is 71
+[ERROR 2022-08-05 10:56:12]Response body != expected_msg, expected_msg is 248, body is 58
+[ERROR 2022-08-05 10:56:59]Response body != expected_msg, expected_msg is 416, body is 70
+[ERROR 2022-08-05 11:00:34]Response body != expected_msg, expected_msg is 639, body is 46
+[ERROR 2022-08-05 11:01:07]Response body != expected_msg, expected_msg is 52, body is 34
+[ERROR 2022-08-05 11:23:36]Response body Does not contain expected_msg, expected_msg is 137, body is 71
+[ERROR 2022-08-05 11:25:11]Response body Does not contain expected_msg, expected_msg is 137, body is 71
+[ERROR 2022-08-05 11:25:55]Response body Does not contain expected_msg, expected_msg is 137, body is 71

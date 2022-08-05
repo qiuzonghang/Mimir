@@ -174,6 +174,7 @@ class TestCase:
         sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
         sql_server.execute(sql)
         sql_result = sql_server.fetchall()[0]
+        assert_dict['new_paper_weight'] = sql_result
         log.info('Sql_result:' + str(sql_result))
         with allure.step('校验结果'):
             allure.attach(str(response) + '\n' + str(sql_result), '实际结果')
@@ -187,7 +188,7 @@ class TestCase:
     @allure.story('JYZZ_query_paper_weight')
     @allure.step("JYZZ_query_paper_weight")
     def test_query_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
-        pytest.xfail('非完整case')
+        # pytest.xfail('排序错误，已知问题')
         uri = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url')
         data = get_JYZZ_param.get('data').get('query_paper_data')
         data['type'] = 'PapaerWeight'
@@ -198,21 +199,66 @@ class TestCase:
         response = request.get_request(url=url, header=header)
         log.info('Response:' + str(response))
         sql_server = get_dev_sql_server
-        sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
+        sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId "
         sql_server.execute(sql)
         sql_result = sql_server.fetchall()
         log.info('Sql_result:' + str(sql_result))
         query_paper = response.get('body').get('data').get('data')
+        # assert_dict['query_paper_weight'] = random.choice(query_paper)
         with allure.step('校验结果'):
             allure.attach(str(response) + '\n' + str(sql_result), '实际结果')
             allure.attach('1、正确返回数据\n2、数据库查验', '预期结果')
         test.assert_code(response.get('body').get('statusCode'), 200)
-        for query_result in query_paper:
-            for sql_rst in sql_result:
-                test.assert_in_text(sql_rst, query_result['value'])
-                test.assert_text()
-        print(response)
-        print(sql_result)
+        for query_num in range(len(query_paper)):
+            test.assert_in_text(str(sql_result[query_num][0]), str(query_paper[query_num]['dId']))
+            test.assert_in_text(str(sql_result[query_num][3]), str(query_paper[query_num]['value']))
+
+    @allure.title('讲义制作-编辑纸张克重定义')
+    @allure.feature('JYZZ_update_paper_weight')
+    @allure.severity('critical')
+    @allure.story('JYZZ_update_paper_weight')
+    @allure.step("JYZZ_update_paper_weight")
+    def test_update_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
+        url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url') + '/%s' % assert_dict['new_paper_weight'][0]
+        data = get_JYZZ_param.get('data').get('add_paper_data')
+        data['type'] = 'PapaerWeight'
+        data['value'] = random.randint(1, 100)
+        data['dId'] = data.pop('id')
+        data['dId'] = assert_dict['new_paper_weight'][0]
+        data['extraProperties'] = 'null'
+        header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
+        response = request.put_request(url=url, header=header, data=data)
+        log.info('Response:' + str(response))
+        sql_server = get_dev_sql_server
+        sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
+        sql_server.execute(sql)
+        sql_result = sql_server.fetchall()
+        log.info('Sql_result:' + str(sql_result))
+        with allure.step('校验结果'):
+            allure.attach(str(response) + '\n' + str(sql_result), '实际结果')
+            allure.attach('1、正确编辑\n2、数据库查验:%s' % str(sql_result[0]), '预期结果')
+        test.assert_code(response.get('body').get('statusCode'), 200)
+        test.assert_text(str(data['value']), str(sql_result[0][3]))
+
+    @allure.title('讲义制作-删除纸张克重定义')
+    @allure.feature('JYZZ_delete_paper_weight')
+    @allure.severity('critical')
+    @allure.story('JYZZ_delete_paper_weight')
+    @allure.step("JYZZ_delete_paper_weight")
+    def test_delete_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
+        url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url') + '/%s' % assert_dict['new_paper_weight'][0]
+        header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
+        response = request.delete_request(url=url, header=header)
+        log.info('Response:' + str(response))
+        sql_server = get_dev_sql_server
+        sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
+        sql_server.execute(sql)
+        sql_result = sql_server.fetchall()
+        log.info('Sql_result:' + str(sql_result))
+        with allure.step('校验结果'):
+            allure.attach(str(response) + '\n' + str(sql_result), '实际结果')
+            allure.attach('1、正确删除\n2、数据库查验:{}'.format(sql_result), '预期结果')
+        test.assert_not_is_body(sql_result[0][0], assert_dict['new_paper_weight'][0])
 
 
 if __name__ == '__main__':
