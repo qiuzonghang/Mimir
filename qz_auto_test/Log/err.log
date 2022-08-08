@@ -26,3 +26,5 @@
 [ERROR 2022-08-05 11:23:36]Response body Does not contain expected_msg, expected_msg is 137, body is 71
 [ERROR 2022-08-05 11:25:11]Response body Does not contain expected_msg, expected_msg is 137, body is 71
 [ERROR 2022-08-05 11:25:55]Response body Does not contain expected_msg, expected_msg is 137, body is 71
+[ERROR 2022-08-08 09:40:37]Response body Does not contain expected_msg, expected_msg is 137, body is 71
+[ERROR 2022-08-08 11:31:37]Response body Does not contain expected_msg, expected_msg is 137, body is 71

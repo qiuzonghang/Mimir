@@ -5,14 +5,17 @@
 
 from Mimir.qz_auto_test.Params.params import get_param_data
 from qz_auto_test.Common.Func import remove_dir
+from Mimir.qz_auto_test.Conf.Config import Config
 import pytest
 import os
 import pymssql
 
+conf = Config()
+
 
 @pytest.fixture(scope='class')
 def get_JYZZ_param():
-    return get_param_data(uri_type='JYZZ', user='wangye@qynet.onmicrosoft.com', pw='Welcome@1')
+    return get_param_data(uri_type='JYZZ', user=conf.wangye_username, pw=conf.wangye_password)
     # user_info = get_user_info(host=JYZZ_param.get('url'))
     # JYZZ_param['user_id'] = user_info.get('data').get('userID')
     # JYZZ_param['depInfo'] = user_info.get('data').get('depInfo')

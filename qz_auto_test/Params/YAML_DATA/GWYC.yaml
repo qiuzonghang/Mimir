@@ -3,18 +3,8 @@ GWYC:
   dec: "公务用车"
   parameters:
     -
-      apply_url: /api/GSMJYZZApply/Apply
-      apply_data:
-           applyCount: 10
-           applyNo: ''
-           className: ''
-           classTeacher: ''
-           departmentId: 0
-           departmentName: ''
-           endClassDate: ''
-           id: 0
-           sourceOfFunds: ''
-           startClassDate: ''
-           startClassId: ''
-           startClassMoudle: ''
-           startClassName: ''
+      get_user_url: /api/GSMHRUserInfos/Search
+      get_user_data:
+           pageNo: 0
+           pageSize: 10
+           queryText: ''

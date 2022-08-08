@@ -125,21 +125,21 @@ class LoginClass:
 
 
 # 写txt文件
-def write_txt(text, user_name=''):
+def write_txt(text, user_name='', env='dev'):
     file_path = project_path + '/Data/token.txt'
     if user_name != '':
         user = user_name.split('@')
-        file_path = project_path + '/Data/%s_token.txt' % user[0]
+        file_path = project_path + '/Data/%s_%s_token.txt' % (env, user[0])
     with open(file_path, 'w', encoding='utf-8') as f:
         f.writelines(text + '\n')
         f.close()
 
 
 # 读txt文件
-def read_txt(file_path=project_path + '/Data/token.txt', user_name=''):
+def read_txt(file_path=project_path + '/Data/token.txt', user_name='', env='dev'):
     if user_name != '':
         user = user_name.split('@')
-        file_path = project_path + '/Data/%s_token.txt' % user[0]
+        file_path = project_path + '/Data/%s_%s_token.txt' % (env, user[0])
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             txt_result = f.readlines()
@@ -184,7 +184,7 @@ def get_access_token(username, password, url, env):
     if env == 'dev':
         host = conf.host_dev
     elif env == 'uat':
-        host = ''
+        host = conf.host_uat
     elif env == 'release':
         host = ''
     else:
@@ -217,3 +217,6 @@ def remove_dir(filepath):
     else:
         shutil.rmtree(filepath)
         os.mkdir(filepath)
+
+
+print(conf.wangye_username, conf.wangye_password)
