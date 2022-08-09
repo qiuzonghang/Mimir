@@ -1,0 +1,2 @@
+1、正确删除
+2、数据库查验:[(172, None, '', '112', 'PapaerWeight'), (171, None, '', '123', 'PapaerWeight'), (164, None, '', '100', 'PapaerWeight'), (149, None, '', '12', 'PapaerWeight'), (148, None, '', '11', 'PapaerWeight'), (133, None, '', '416', 'PapaerWeight'), (129, None, '', '40', 'PapaerWeight')]

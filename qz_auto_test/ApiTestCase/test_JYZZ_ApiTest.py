@@ -7,6 +7,7 @@ import pytest
 import allure
 import requests
 import random
+import json
 
 from Mimir.qz_auto_test.Common.Request import Request
 from Mimir.qz_auto_test.Common.Log import MyLog
@@ -21,6 +22,8 @@ assert_dict = {}
 
 
 @pytest.mark.usefixtures('get_JYZZ_param', 'get_dev_sql_server')
+@pytest.mark.site
+@pytest.mark.JYZZ
 class TestCase:
 
     @allure.title('讲义制作-开课名称')
@@ -85,14 +88,15 @@ class TestCase:
     def test_apply(self, get_JYZZ_param, get_dev_sql_server):
         url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('apply_url')
         apply_data = get_JYZZ_param.get('data').get('apply_data')
-        header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
+        # header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
         data = get_JYZZ_apply_param(origin_param=apply_data, result_param=assert_dict)
         random_depInfo = random.choice(get_JYZZ_param.get('user_info').get('data').get('depInfo'))
         data['departmentName'] = random_depInfo.get('departmentName')
         data['departmentId'] = random_depInfo.get('departmentId')
         data['applyCount'] = random.randrange(10, 100, 10)
         assert_dict['apply_data'] = data
-        r = request.post_request(url=url, header=header, data=data)
+        # print(json.dumps(data))
+        r = request.post_request(url=url, token=get_JYZZ_param['token'], data=data)
         log.info(str(r))
         # sql_server = get_dev_sql_server
         # sql = 'select * from GSM_JYZZ_Apply order by id desc'

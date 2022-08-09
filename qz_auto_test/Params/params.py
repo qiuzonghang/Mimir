@@ -7,6 +7,7 @@ from Mimir.qz_auto_test.Common.Func import get_access_token, read_txt, project_p
 from Mimir.qz_auto_test.Common.Log import MyLog
 from Mimir.qz_auto_test.Conf.Config import Config
 from Mimir.qz_auto_test.Params.get_yaml import GetPages
+from Mimir.qz_auto_test.Common.Request import Request
 import time
 import requests
 import re
@@ -14,11 +15,12 @@ import re
 log = MyLog()
 conf = Config()
 get_data = GetPages()
+request = Request()
 
 
-def get_param_data(uri_type, user, pw, env='dev', get_token_url='https://devsite.qintelligence.cn/#/work', get_token=True):
+def get_param_data(uri_type, user, pw, env='dev', get_token=True):
     if get_token:
-        token, host, user_info = get_access_token(username=user, password=pw, env=env, url=get_token_url)
+        token, host, user_info = get_access_token(username=user, password=pw, env=env)
     else:
         token, host, user_info = '', '', {}
     total_param = get_data.get_page_list()
@@ -47,11 +49,20 @@ def check_sort(results):
     for num in range(len(results)):
         if re.sub('JYZZ', '', results[num].get('applyNo')) == re.sub('JYZZ', '', results[-1].get('applyNo')):
             break
-        elif int(re.sub('JYZZ', '', results[num].get('applyNo'))) < int(re.sub('JYZZ', '', results[num+1].get('applyNo'))):
+        elif int(re.sub('JYZZ', '', results[num].get('applyNo'))) < int(
+                re.sub('JYZZ', '', results[num + 1].get('applyNo'))):
             return False
     return True
 
 
+def get_user_info(username_text, token):
+    url = 'https://devsite.qintelligence.cn/api/GSMHRUserInfos/Search'
+    data = {"pageNo": 0, "pageSize": 10, "queryText": username_text}
+    r = request.post_request(url=url, data=data, token=token)
+
+
+# token, host, user_info = get_access_token(username=conf.wangye_username, password=conf.wangye_password, env='dev', url='https://devsite.qintelligence.cn/#/work')
+# print(get_user_info(username_text='王野', token=token))
 # print(check_sort(a))
 # parameter = get_param_data(uri_type='JYZZ', user='wangye@qynet.onmicrosoft.com', pw='Welcome@1')
 # print(parameter)

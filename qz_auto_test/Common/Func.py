@@ -173,7 +173,7 @@ def check_token(access_token, user, host):
 
 
 # 登录token获取
-def get_access_token(username, password, url, env):
+def get_access_token(username, password, env):
     """
     :param username:    # 登录用户名
     :param password:    # 用户密码
@@ -183,8 +183,10 @@ def get_access_token(username, password, url, env):
     """
     if env == 'dev':
         host = conf.host_dev
+        url = 'https://' + host + '/#/work'
     elif env == 'uat':
         host = conf.host_uat
+        url = 'https://' + host + '/#/work'
     elif env == 'release':
         host = ''
     else:
@@ -205,7 +207,7 @@ def get_access_token(username, password, url, env):
         if run_type:   # 登录后获取的token是否正确
             return re.sub('\n', '', read_txt(user_name=username)[-1]), host, user_info
         else:
-            raise 'Get Token Error!'
+            raise EOFError
     else:
         return re.sub('\n', '', read_txt(user_name=username)[-1]), host, user_info      # 文件中的token
 
@@ -219,4 +221,3 @@ def remove_dir(filepath):
         os.mkdir(filepath)
 
 
-print(conf.wangye_username, conf.wangye_password)

@@ -15,11 +15,8 @@ conf = Config()
 
 @pytest.fixture(scope='class')
 def get_JYZZ_param():
+    # return get_param_data(uri_type='JYZZ', user=conf.wangye_username, pw=conf.wangye_password)
     return get_param_data(uri_type='JYZZ', user=conf.wangye_username, pw=conf.wangye_password)
-    # user_info = get_user_info(host=JYZZ_param.get('url'))
-    # JYZZ_param['user_id'] = user_info.get('data').get('userID')
-    # JYZZ_param['depInfo'] = user_info.get('data').get('depInfo')
-    # return JYZZ_param
 
 
 @pytest.fixture(scope='class')
