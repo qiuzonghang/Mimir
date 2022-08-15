@@ -2,6 +2,7 @@
 # @Time   : 2022/8/1 11:36
 # @Author : qiuzonghang
 # @File   : params.py
+import random
 
 from Mimir.qz_auto_test.Common.Func import get_access_token, read_txt, project_path
 from Mimir.qz_auto_test.Common.Log import MyLog
@@ -32,7 +33,7 @@ def get_param_data(uri_type, user, pw, env='dev', get_token=True):
         return {'url': host + uri, 'data': param_data, 'token': token, 'user_info': user_info}
     else:
         # print('----------------')
-        return {'url': host, 'data': total_param.get(uri_type)[0], 'token': token, 'user_info': user_info}
+        return {'url': host, 'data': total_param.get(uri_type)[0], 'token': token, 'user_info': user_info, 'env': env}
 
 
 def get_JYZZ_apply_param(origin_param, result_param):
@@ -55,14 +56,17 @@ def check_sort(results):
     return True
 
 
-def get_user_info(username_text, token):
-    url = 'https://devsite.qintelligence.cn/api/GSMHRUserInfos/Search'
-    data = {"pageNo": 0, "pageSize": 10, "queryText": username_text}
-    r = request.post_request(url=url, data=data, token=token)
-
-
-# token, host, user_info = get_access_token(username=conf.wangye_username, password=conf.wangye_password, env='dev', url='https://devsite.qintelligence.cn/#/work')
-# print(get_user_info(username_text='王野', token=token))
+# def get_user_info(username_text, token, host):
+#     url = 'https://' + host + '/api/GSMHRUserInfos/Search'
+#     data = {"pageNo": 0, "pageSize": 10, "queryText": username_text}
+#     r = request.post_request(url=url, data=data, token=token)
+#     user_dt = random.choice(r.get('body').get('data').get('data'))
+#     print(user_dt)
+#
+#
+# token, host, user_info = get_access_token(username=conf.wangye_username_dev, password=conf.wangye_password_dev, env='dev')
+# print(user_info)
+# print(get_user_info(username_text='王野', token=token, host=host))
 # print(check_sort(a))
 # parameter = get_param_data(uri_type='JYZZ', user='wangye@qynet.onmicrosoft.com', pw='Welcome@1')
 # print(parameter)

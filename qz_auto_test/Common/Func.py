@@ -139,13 +139,13 @@ def write_txt(text, user_name='', env='dev'):
 def read_txt(file_path=project_path + '/Data/token.txt', user_name='', env='dev'):
     if user_name != '':
         user = user_name.split('@')
-        file_path = project_path + '/Data/%s_%s_token.txt' % (env, user[0])
+        file_path = project_path + '/Data/%s_%s_token.txt' % (env, user[0].lower())
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             txt_result = f.readlines()
             return txt_result
     except FileNotFoundError:
-        write_txt(text='test', user_name=user_name)
+        write_txt(text='test', user_name=user_name, env=env)
         with open(file_path, 'r', encoding='utf-8') as f:
             txt_result = f.readlines()
             return txt_result
@@ -162,9 +162,8 @@ def check_token(access_token, user, host):
     url = 'https://' + host + '/api/user/info'
     header = {'authorization': access_token}
     r = requests.get(url=url, headers=header)
-    # print(r.text)
     try:
-        if r.status_code == 200 and r.json().get('data').get('email') == user:
+        if r.status_code == 200 and r.json().get('data').get('email').casefold() == user.casefold():
             return True, r.json()
         else:
             return False, {}
@@ -191,25 +190,26 @@ def get_access_token(username, password, env):
         host = ''
     else:
         raise
-    run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username)[-1]), username, host)
+
+    run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
     if run_type is False:      # 检查token是否正确
-        dr = base.start_dr(url=url, driver_name='chrome')   # open chrome
+        dr = base.start_dr(url=re.sub('api', '', url), driver_name='firefox')   # open chrome
         base.user_login(username, password)     # login
-        time.sleep(5)
+        time.sleep(10)
         for request in dr.requests:     # 登录后获取token
             if request.response:
                 if 'Bearer' in str(request.headers['authorization']):
-                    write_txt(str(request.headers['authorization']), user_name=username)
+                    write_txt(str(request.headers['authorization']), user_name=username, env=env)
                     break
         log.info('获取token，退出浏览器...')
         dr.quit()
-        run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username)[-1]), username, host)
+        run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
         if run_type:   # 登录后获取的token是否正确
-            return re.sub('\n', '', read_txt(user_name=username)[-1]), host, user_info
+            return re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), host, user_info
         else:
             raise EOFError
     else:
-        return re.sub('\n', '', read_txt(user_name=username)[-1]), host, user_info      # 文件中的token
+        return re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), host, user_info      # 文件中的token
 
 
 def remove_dir(filepath):
@@ -219,5 +219,4 @@ def remove_dir(filepath):
     else:
         shutil.rmtree(filepath)
         os.mkdir(filepath)
-
 

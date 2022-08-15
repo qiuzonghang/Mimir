@@ -1,0 +1,99 @@
+1660554052048	geckodriver	INFO	Listening on 127.0.0.1:54815
+1660554055093	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54816" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofilebjvhpx"
+1660554055784	Marionette	INFO	Marionette enabled
+1660554055789	Marionette	INFO	Listening on port 54831
+WebDriver BiDi listening on ws://localhost:54816
+Read port: 54831
+1660554055946	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1660554055980	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:54814","sslProxy":"127.0.0.1:54814"}
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofilebjvhpx\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:54816/devtools/browser/c5565e00-f0be-4959-8817-8a9dccf28f57
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660554091700	Marionette	INFO	Stopped listening on port 54831
+1660557288739	geckodriver	INFO	Listening on 127.0.0.1:58408
+1660557291818	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "58409" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofileIF5gem"
+1660557292191	Marionette	INFO	Marionette enabled
+1660557292195	Marionette	INFO	Listening on port 58421
+WebDriver BiDi listening on ws://localhost:58409
+Read port: 58421
+1660557292344	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1660557292380	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:58407","sslProxy":"127.0.0.1:58407"}
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofileIF5gem\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:58409/devtools/browser/e380b94d-cf98-4752-8745-1b0cdf1ba830
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660557329611	Marionette	INFO	Stopped listening on port 58421
+1660559500225	geckodriver	INFO	Listening on 127.0.0.1:61263
+1660559503267	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61264" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofileSJE0It"
+1660559503652	Marionette	INFO	Marionette enabled
+1660559503657	Marionette	INFO	Listening on port 61281
+WebDriver BiDi listening on ws://localhost:61264
+Read port: 61281
+1660559503801	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1660559503835	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61262","sslProxy":"127.0.0.1:61262"}
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofileSJE0It\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:61264/devtools/browser/5aa41592-d2c7-41a3-99d1-103bb67f7791
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660559547854	Marionette	INFO	Stopped listening on port 61281
+1660559549438	geckodriver	INFO	Listening on 127.0.0.1:61437
+1660559552512	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "61438" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofile4fQxwU"
+1660559552769	Marionette	INFO	Marionette enabled
+1660559552773	Marionette	INFO	Listening on port 61454
+WebDriver BiDi listening on ws://localhost:61438
+Read port: 61454
+1660559552918	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1660559552949	RemoteAgent	INFO	Proxy settings initialised: {"proxyType":"manual","httpProxy":"127.0.0.1:61436","sslProxy":"127.0.0.1:61436"}
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\86199\\AppData\\Local\\Temp\\rust_mozprofile4fQxwU\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:61438/devtools/browser/f450964f-1936-490e-adca-b2ab182456c1
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://login.microsoftonline.com"
+JavaScript error: resource://gre/modules/LoginManagerParent.jsm, line 136: TypeError: gRecipeManager is null
+1660559599771	Marionette	INFO	Stopped listening on port 61454

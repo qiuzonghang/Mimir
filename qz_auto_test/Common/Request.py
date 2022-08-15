@@ -35,6 +35,7 @@ class Request:
         if header is False:
             header = {'authorization': token, 'content-type': 'application/json'}
         try:
+            # print(header)
             response = requests.get(url=url, headers=header)
             log.info('url：{}\nheaders：{}'.format(url, header))
         except requests.RequestException as e:
@@ -62,6 +63,7 @@ class Request:
         if not url.startswith('https://'):
             url = '%s%s' % ('https://', url)
         data_json = json.dumps(data)
+        # print(url)
         # print(data_json)
         if header is False:
             header = {'authorization': token, 'content-type': 'application/json'}

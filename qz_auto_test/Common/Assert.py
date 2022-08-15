@@ -197,3 +197,20 @@ class Assertions:
             Consts.RESULT_LIST.append('fail')
 
             raise
+
+    def assert_three_text(self, body, sql_data, expected_msg):
+        """
+                验证response body中是否期字符串
+                :param body:
+                :param expected_msg:
+                :return:
+                """
+        try:
+            assert expected_msg == body == sql_data
+            return True
+
+        except:
+            self.log.error("Response expected_msg != body != sql_data, expected_msg is %s, body is %s, sql_data is %s" % (expected_msg, body, sql_data))
+            Consts.RESULT_LIST.append('fail')
+
+            raise

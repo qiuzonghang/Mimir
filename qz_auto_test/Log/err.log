@@ -32,3 +32,16 @@
 [ERROR 2022-08-09 15:51:32]Response body Does not contain expected_msg, expected_msg is 171, body is 129
 [ERROR 2022-08-09 16:18:35]Response body Does not contain expected_msg, expected_msg is 171, body is 129
 [ERROR 2022-08-09 16:19:31]Response body Does not contain expected_msg, expected_msg is 171, body is 129
+[ERROR 2022-08-12 18:25:08]Response body != expected_msg, expected_msg is 966, body is 688
+[ERROR 2022-08-15 09:29:58]Response body Does not contain expected_msg, expected_msg is 171, body is 129
+[ERROR 2022-08-15 11:30:55]Response body Does not contain expected_msg, expected_msg is 171, body is 129
+[ERROR 2022-08-15 14:06:14]Response body != expected_msg, expected_msg is ITTest2, body is ITtest2
+[ERROR 2022-08-15 15:31:54]Response body != expected_msg, expected_msg is GWYC20220022, body is None
+[ERROR 2022-08-15 15:35:57]Response expected_msg != body != sql_data, expected_msg is 494, body is 494, sql_data is 494
+[ERROR 2022-08-15 15:40:01]Response body != expected_msg, expected_msg is wangye, body is 王野
+[ERROR 2022-08-15 15:43:02]Response body != expected_msg, expected_msg is wangye, body is 王野
+[ERROR 2022-08-15 15:46:21]Response body Does not contain expected_msg, expected_msg is 171, body is 129
+[ERROR 2022-08-15 16:48:48]Response body != expected_msg, expected_msg is 2022-08-15 16:48:01.073000, body is 2022-08-15 16:48
+[ERROR 2022-08-15 16:50:52]Response body != expected_msg, expected_msg is 2022-08-15 16:50, body is 2022-08-15 16:15
+[ERROR 2022-08-15 17:02:36]Response body != expected_msg, expected_msg is 测试2号的公务用车申请, body is ITtest2的公务用车申请
+[ERROR 2022-08-15 17:07:34]Response body != expected_msg, expected_msg is ittest2@gsm.pku.edu.cn, body is ITTest2@gsm.pku.edu.cn

@@ -15,7 +15,12 @@ class Config:
     TITLE_DEV = "env_dev"
     # TITLE_RELEASE = "online_release"
     TITLE_UAT = "env_uat"
-    USER_WANGYE = 'user_wangye'
+    TITLE_USER_WANGYE_DEV = 'user_wangye_dev'
+    TITLE_USER_ITTEST2_UAT = 'user_ITtest2_uat'
+    TITLE_USER_ITTEST3_UAT = 'user_ITtest3_uat'
+    TITLE_USER_TESTER3_DEV = 'user_tester3_uat'
+    TITLE_SQL_SERVER_DEV = 'sql_server_dev'
+    TITLE_SQL_SERVER_UAT = 'sql_server_uat'
 
     # values:
     # [debug\release]
@@ -23,16 +28,9 @@ class Config:
     VALUE_ENVIRONMENT = "environment"
     VALUE_VERSION_CODE = "versionCode"
     VALUE_HOST = "host"
-    VALUE_USER_WANGYE_USERNAME = 'username'
-    VALUE_USER_WANGYE_PASSWORD = 'password'
-    # VALUE_LOGIN_HOST = "loginHost"
-    # VALUE_LOGIN_INFO = "loginInfo"
-    # # [mail]
-    # VALUE_SMTP_SERVER = "smtpserver"
-    # VALUE_SENDER = "sender"
-    # VALUE_RECEIVER = "receiver"
-    # VALUE_USERNAME = "username"
-    # VALUE_PASSWORD = "password"
+    VALUE_USERNAME = 'username'
+    VALUE_PASSWORD = 'password'
+    VALUE_DATABASE = 'database'
 
     # path
     path_dir = str(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
@@ -56,34 +54,28 @@ class Config:
         self.environment_dev = self.get_conf(Config.TITLE_DEV, Config.VALUE_ENVIRONMENT)
         self.versionCode_dev = self.get_conf(Config.TITLE_DEV, Config.VALUE_VERSION_CODE)
         self.host_dev = self.get_conf(Config.TITLE_DEV, Config.VALUE_HOST)
-        # self.loginHost_debug = self.get_conf(Config.TITLE_DEBUG, Config.VALUE_LOGIN_HOST)
-        # self.loginInfo_debug = self.get_conf(Config.TITLE_DEBUG, Config.VALUE_LOGIN_INFO)
 
-        # self.tester_release = self.get_conf(Config.TITLE_RELEASE, Config.VALUE_TESTER)
-        # self.environment_release = self.get_conf(Config.TITLE_RELEASE, Config.VALUE_ENVIRONMENT)
-        # self.versionCode_release = self.get_conf(Config.TITLE_RELEASE, Config.VALUE_VERSION_CODE)
-        # self.host_release = self.get_conf(Config.TITLE_RELEASE, Config.VALUE_HOST)
-        # #self.loginHost_release = self.get_conf(Config.TITLE_RELEASE, Config.VALUE_LOGIN_HOST)
-        # #self.loginInfo_release = self.get_conf(Config.TITLE_RELEASE, Config.VALUE_LOGIN_INFO)
-        #
         self.tester_uat = self.get_conf(Config.TITLE_UAT, Config.VALUE_TESTER)
         self.environment_uat = self.get_conf(Config.TITLE_UAT, Config.VALUE_ENVIRONMENT)
         self.versionCode_uat = self.get_conf(Config.TITLE_UAT, Config.VALUE_VERSION_CODE)
         self.host_uat = self.get_conf(Config.TITLE_UAT, Config.VALUE_HOST)
-        #
-        # self.tester_release_lineC = self.get_conf(Config.TITLE_RELEASE_LINEC, Config.VALUE_TESTER)
-        # self.environment_release_lineC = self.get_conf(Config.TITLE_RELEASE_LINEC, Config.VALUE_ENVIRONMENT)
-        # self.versionCode_release_lineC = self.get_conf(Config.TITLE_RELEASE_LINEC, Config.VALUE_VERSION_CODE)
-        # self.host_release_lineC = self.get_conf(Config.TITLE_RELEASE_LINEC, Config.VALUE_HOST)
-        #
-        # self.smtpserver = self.get_conf(Config.TITLE_EMAIL, Config.VALUE_SMTP_SERVER)
-        # self.sender = self.get_conf(Config.TITLE_EMAIL, Config.VALUE_SENDER)
-        # self.receiver = self.get_conf(Config.TITLE_EMAIL, Config.VALUE_RECEIVER)
-        # self.username = self.get_conf(Config.TITLE_EMAIL, Config.VALUE_USERNAME)
-        # self.password = self.get_conf(Config.TITLE_EMAIL, Config.VALUE_PASSWORD)
 
-        self.wangye_username = self.get_conf(Config.USER_WANGYE, Config.VALUE_USER_WANGYE_USERNAME)
-        self.wangye_password = self.get_conf(Config.USER_WANGYE, Config.VALUE_USER_WANGYE_PASSWORD)
+        self.wangye_username_dev = self.get_conf(Config.TITLE_USER_WANGYE_DEV, Config.VALUE_USERNAME)
+        self.wangye_password_dev = self.get_conf(Config.TITLE_USER_WANGYE_DEV, Config.VALUE_PASSWORD)
+        self.tester3_username_dev = self.get_conf(Config.TITLE_USER_TESTER3_DEV, Config.VALUE_USERNAME)
+        self.tester3_password_dev = self.get_conf(Config.TITLE_USER_TESTER3_DEV, Config.VALUE_PASSWORD)
+        self.ITtest2_username_uat = self.get_conf(Config.TITLE_USER_ITTEST2_UAT, Config.VALUE_USERNAME)
+        self.ITtest2_password_uat = self.get_conf(Config.TITLE_USER_ITTEST2_UAT, Config.VALUE_PASSWORD)
+        self.ITtest3_username_uat = self.get_conf(Config.TITLE_USER_ITTEST3_UAT, Config.VALUE_USERNAME)
+        self.ITtest3_password_uat = self.get_conf(Config.TITLE_USER_ITTEST3_UAT, Config.VALUE_PASSWORD)
+        self.sql_server_host_dev = self.get_conf(Config.TITLE_SQL_SERVER_DEV, Config.VALUE_HOST)
+        self.sql_server_database_dev = self.get_conf(Config.TITLE_SQL_SERVER_DEV, Config.VALUE_DATABASE)
+        self.sql_server_username_dev = self.get_conf(Config.TITLE_SQL_SERVER_DEV, Config.VALUE_USERNAME)
+        self.sql_server_password_dev = self.get_conf(Config.TITLE_SQL_SERVER_DEV, Config.VALUE_PASSWORD)
+        self.sql_server_host_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_HOST)
+        self.sql_server_database_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_DATABASE)
+        self.sql_server_username_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_USERNAME)
+        self.sql_server_password_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_PASSWORD)
 
     def get_conf(self, title, value):
         """

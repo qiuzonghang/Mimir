@@ -1,0 +1,1 @@
+(28427, datetime.datetime(2022, 8, 15, 17, 21, 50, 40000), datetime.datetime(2022, 8, 15, 17, 22, 23, 207000), 'ITTest2@gsm.pku.edu.cn', 'ITtest2的公务用车申请', "<span style ='font - family:Calibri'><p>ITtest2的公务用车申请GWYC20220030已提交，请登录平台“我的待办”下补充相关信息并确认。</p></span>", 0, True, datetime.datetime(2022, 8, 15, 17, 22, 23, 207000), 'gsmittest@gsm.pku.edu.cn')

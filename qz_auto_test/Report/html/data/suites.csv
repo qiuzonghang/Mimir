@@ -1,10 +1,10 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Aug 09 15:51:32 CST 2022","Tue Aug 09 15:51:33 CST 2022","238","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-删除纸张克重定义",""
-"passed","Tue Aug 09 15:51:26 CST 2022","Tue Aug 09 15:51:26 CST 2022","189","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-开课名称",""
-"passed","Tue Aug 09 15:51:26 CST 2022","Tue Aug 09 15:51:31 CST 2022","4768","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-新建讲义",""
-"passed","Tue Aug 09 15:51:32 CST 2022","Tue Aug 09 15:51:32 CST 2022","262","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-编辑纸张克重定义",""
-"failed","Tue Aug 09 15:51:32 CST 2022","Tue Aug 09 15:51:32 CST 2022","249","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-获取纸张克重定义",""
-"passed","Tue Aug 09 15:51:31 CST 2022","Tue Aug 09 15:51:32 CST 2022","218","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-新增纸张克重定义",""
-"passed","Tue Aug 09 15:51:31 CST 2022","Tue Aug 09 15:51:31 CST 2022","212","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-讲义管理列表",""
-"passed","Tue Aug 09 15:51:31 CST 2022","Tue Aug 09 15:51:31 CST 2022","196","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-讲义列表",""
-"passed","Tue Aug 09 15:51:26 CST 2022","Tue Aug 09 15:51:26 CST 2022","192","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-开课班级",""
+"passed","Mon Aug 15 17:21:51 CST 2022","Mon Aug 15 17:22:53 CST 2022","62604","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-check邮件","
+            校验新增公务用车后是否会发送邮件，依赖 test_apply case 创建
+        "
+"passed","Mon Aug 15 17:21:50 CST 2022","Mon Aug 15 17:21:51 CST 2022","121","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取user信息","
+            数据依赖，校验关键词结果
+        "
+"passed","Mon Aug 15 17:21:51 CST 2022","Mon Aug 15 17:21:51 CST 2022","123","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-发起工单","
+            校验新增公务用车，依赖 test_user_info case信息
+        "

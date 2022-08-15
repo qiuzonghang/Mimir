@@ -21,7 +21,7 @@ test = Assertions()
 assert_dict = {}
 
 
-@pytest.mark.usefixtures('get_JYZZ_param', 'get_dev_sql_server')
+@pytest.mark.usefixtures('get_JYZZ_param', 'get_sql_server', 'get_emba_token')
 @pytest.mark.site
 @pytest.mark.JYZZ
 class TestCase:
@@ -31,17 +31,25 @@ class TestCase:
     @allure.severity('critical')
     @allure.story('JYZZ_start-class')
     @allure.step("JYZZ_start-class")
-    def test_start_class(self, get_JYZZ_param):
+    def test_start_class_emba(self, get_JYZZ_param, get_sql_server, get_emba_token):
+        """
+            数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，EMBA账号
+        """
+        token, none_data01, none_data02 = get_emba_token
         host = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('start_class_url')
         start_class_data = get_JYZZ_param.get('data').get('start_class_data')
         data_list = []
         [data_list.append(k + '=' + str(v)) for k, v in start_class_data.items()]
         case = random.choice(['测试', '课程'])
         url = host + '&'.join(data_list) + case
-        header = {'authorization': get_JYZZ_param['token']}
-        r = request.get_request(url=url, header=header)
-        log.info(str(r))
+        r = request.get_request(url=url, token=token)
+        sql_server = get_sql_server
+        sql = "select * from GsmCourseManagement where PageType = 'emba' and CourseNameCN like '%{}%'".format(case)
+        sql_server.execute(sql)
+        start_class_sql_result = sql_server.fetchall()
+        log.info('Response:%s\nSQL:%s' % (str(r), str(start_class_sql_result)))
         class_info_list = r.get('body').get('data')
+        print(class_info_list)
         random_class_info = random.choice(class_info_list)
         assert_dict['className'] = random_class_info.get('courseName')
         assert_dict['classTeacher'] = random_class_info.get('teacherName')
@@ -50,9 +58,12 @@ class TestCase:
             allure.attach(str(class_info_list), '实际结果')
             allure.attach('含有“%s”关键词的开课名称及对应教师' % case, '预期结果')
         test.assert_code(200, r['code'])
+        sql_result_list = []
+        [sql_result_list.append(sql_result[-13]) for sql_result in start_class_sql_result]
         for class_info in class_info_list:
             test.assert_in_text(class_info.get('courseName'), case)
             test.assert_not_is_body(class_info.get('teacherName'), '')
+            test.assert_in_text(sql_result_list, class_info.get('courseName'))
 
     @allure.title('讲义制作-开课班级')
     @allure.feature('JYZZ_school_roll_class')
@@ -64,7 +75,7 @@ class TestCase:
         school_roll_class_data = get_JYZZ_param.get('data').get('school_roll_class_data')
         data_list = []
         [data_list.append(k + '=' + str(v)) for k, v in school_roll_class_data.items()]
-        case = random.choice(['班级', '测试'])
+        case = random.choice(['班', '测试'])
         url = host + '&'.join(data_list) + case
         header = {'authorization': get_JYZZ_param['token']}
         r = request.get_request(url=url, header=header)
@@ -85,7 +96,7 @@ class TestCase:
     @allure.severity('critical')
     @allure.story('JYZZ_apply')
     @allure.step("JYZZ_apply")
-    def test_apply(self, get_JYZZ_param, get_dev_sql_server):
+    def test_apply(self, get_JYZZ_param, get_sql_server):
         url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('apply_url')
         apply_data = get_JYZZ_param.get('data').get('apply_data')
         # header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
@@ -165,7 +176,7 @@ class TestCase:
     @allure.severity('critical')
     @allure.story('JYZZ_add_paper_weight')
     @allure.step("JYZZ_add_paper_weight")
-    def test_add_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
+    def test_add_paper_weight(self, get_JYZZ_param, get_sql_server):
         url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url')
         data = get_JYZZ_param.get('data').get('add_paper_data')
         weight_value = random.randint(1, 1000)
@@ -174,7 +185,7 @@ class TestCase:
         header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
         response = request.post_request(url=url, data=data, header=header)
         log.info('Response:' + str(response))
-        sql_server = get_dev_sql_server
+        sql_server = get_sql_server
         sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
         sql_server.execute(sql)
         sql_result = sql_server.fetchall()[0]
@@ -191,7 +202,7 @@ class TestCase:
     @allure.severity('critical')
     @allure.story('JYZZ_query_paper_weight')
     @allure.step("JYZZ_query_paper_weight")
-    def test_query_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
+    def test_query_paper_weight(self, get_JYZZ_param, get_sql_server):
         # pytest.xfail('排序错误，已知问题')
         uri = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url')
         data = get_JYZZ_param.get('data').get('query_paper_data')
@@ -202,7 +213,7 @@ class TestCase:
         url = uri + '?' + '&'.join(data_list)
         response = request.get_request(url=url, header=header)
         log.info('Response:' + str(response))
-        sql_server = get_dev_sql_server
+        sql_server = get_sql_server
         sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId "
         sql_server.execute(sql)
         sql_result = sql_server.fetchall()
@@ -222,7 +233,7 @@ class TestCase:
     @allure.severity('critical')
     @allure.story('JYZZ_update_paper_weight')
     @allure.step("JYZZ_update_paper_weight")
-    def test_update_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
+    def test_update_paper_weight(self, get_JYZZ_param, get_sql_server):
         url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url') + '/%s' % assert_dict['new_paper_weight'][0]
         data = get_JYZZ_param.get('data').get('add_paper_data')
         data['type'] = 'PapaerWeight'
@@ -233,7 +244,7 @@ class TestCase:
         header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
         response = request.put_request(url=url, header=header, data=data)
         log.info('Response:' + str(response))
-        sql_server = get_dev_sql_server
+        sql_server = get_sql_server
         sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
         sql_server.execute(sql)
         sql_result = sql_server.fetchall()
@@ -249,12 +260,12 @@ class TestCase:
     @allure.severity('critical')
     @allure.story('JYZZ_delete_paper_weight')
     @allure.step("JYZZ_delete_paper_weight")
-    def test_delete_paper_weight(self, get_JYZZ_param, get_dev_sql_server):
+    def test_delete_paper_weight(self, get_JYZZ_param, get_sql_server):
         url = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('add_paper_url') + '/%s' % assert_dict['new_paper_weight'][0]
         header = {'authorization': get_JYZZ_param['token'], 'content-type': 'application/json'}
         response = request.delete_request(url=url, header=header)
         log.info('Response:' + str(response))
-        sql_server = get_dev_sql_server
+        sql_server = get_sql_server
         sql = "select * from GSM_JYZZ_Dic where Type = 'PapaerWeight' order by DId desc "
         sql_server.execute(sql)
         sql_result = sql_server.fetchall()

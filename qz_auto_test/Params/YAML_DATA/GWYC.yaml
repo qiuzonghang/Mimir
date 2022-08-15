@@ -8,3 +8,16 @@ GWYC:
            pageNo: 0
            pageSize: 10
            queryText: ''
+      apply_GWYC_url: /api/GSMOfficialVehiclesApply
+      apply_GWYC_data:
+          userDepartmentId: 0       # 部门id
+          userDepartmentName: ''    # 部门名称
+          userName: ''
+          userId: ''
+          costTotal: ''             #费用
+          financialNumber: ''       #财务编号
+          tag: '自动化测试勿动'
+          workTelephone: ''
+          id: 0
+          moblie: ''
+          status: '1'
