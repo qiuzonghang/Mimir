@@ -13,7 +13,7 @@ from Mimir.qz_auto_test.Common.Request import Request
 from Mimir.qz_auto_test.Common.Log import MyLog
 from Mimir.qz_auto_test.Common.Assert import Assertions
 from Mimir.qz_auto_test.Conf.Config import Config
-from Mimir.qz_auto_test.Params.params import get_JYZZ_apply_param, check_sort
+from Mimir.qz_auto_test.Params.params import get_JYZZ_apply_param, check_sort, arr_sql_param, arr_sql_title
 
 request = Request()
 log = MyLog()
@@ -26,51 +26,99 @@ assert_dict = {}
 @pytest.mark.JYZZ
 class TestCase:
 
-    @allure.title('讲义制作-开课名称')
-    @allure.feature('JYZZ_start-class')
+    @allure.title('讲义制作-开课名称-EMBA')
+    @allure.feature('JYZZ_start_class_emba')
     @allure.severity('critical')
-    @allure.story('JYZZ_start-class')
-    @allure.step("JYZZ_start-class")
+    @allure.story('JYZZ_start_class_emba')
+    @allure.step("JYZZ_start_class_emba")
     def test_start_class_emba(self, get_JYZZ_param, get_sql_server, get_emba_token):
         """
-            数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，EMBA账号
+            课程名称，数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，EMBA账号
         """
         token, none_data01, none_data02 = get_emba_token
         host = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('start_class_url')
         start_class_data = get_JYZZ_param.get('data').get('start_class_data')
         data_list = []
         [data_list.append(k + '=' + str(v)) for k, v in start_class_data.items()]
-        case = random.choice(['测试', '课程'])
+        if 'uat' in host:
+            case = random.choice(['测试', '课程'])
+        else:
+            case = random.choice(['管理', '工商'])
         url = host + '&'.join(data_list) + case
         r = request.get_request(url=url, token=token)
         sql_server = get_sql_server
-        sql = "select * from GsmCourseManagement where PageType = 'emba' and CourseNameCN like '%{}%'".format(case)
+        sql = "select * from GSMStartClass where PageType = 'emba' and CourseNameCN like '%{}%'".format(case)
         sql_server.execute(sql)
         start_class_sql_result = sql_server.fetchall()
+        sql_title = arr_sql_title(sql_server.description)
+        sql_result = arr_sql_param(sql_title, start_class_sql_result)
         log.info('Response:%s\nSQL:%s' % (str(r), str(start_class_sql_result)))
         class_info_list = r.get('body').get('data')
-        print(class_info_list)
         random_class_info = random.choice(class_info_list)
         assert_dict['className'] = random_class_info.get('courseName')
         assert_dict['classTeacher'] = random_class_info.get('teacherName')
-        # assert_dict['random_start_class_id'] = random_class_info.get('id')
         with allure.step('校验结果'):
             allure.attach(str(class_info_list), '实际结果')
             allure.attach('含有“%s”关键词的开课名称及对应教师' % case, '预期结果')
-        test.assert_code(200, r['code'])
-        sql_result_list = []
-        [sql_result_list.append(sql_result[-13]) for sql_result in start_class_sql_result]
-        for class_info in class_info_list:
-            test.assert_in_text(class_info.get('courseName'), case)
-            test.assert_not_is_body(class_info.get('teacherName'), '')
-            test.assert_in_text(sql_result_list, class_info.get('courseName'))
+        test.assert_code(r.get('body').get('statusCode'), 200)
+        for rsp_num in range(len(class_info_list)):
+            test.assert_in_text(class_info_list[rsp_num].get('courseName'), case)
+            test.assert_not_is_body(class_info_list[rsp_num].get('teacherName'), '')
+            for rsp_k, rsp_v in class_info_list[rsp_num].items():
+                for sql_k, sql_v in sql_result[rsp_num].items():
+                    if rsp_k.casefold() == sql_k.casefold():
+                        test.assert_text(str(rsp_v).split('.')[0], str(sql_v).split('.')[0])
 
-    @allure.title('讲义制作-开课班级')
-    @allure.feature('JYZZ_school_roll_class')
+    @allure.title('讲义制作-开课班级-EMBA')
+    @allure.feature('JYZZ_school_roll_class_emba')
     @allure.severity('critical')
-    @allure.story('JYZZ_school_roll_class')
-    @allure.step("JYZZ_school_roll_class")
-    def test_school_roll_class(self, get_JYZZ_param):
+    @allure.story('JYZZ_school_roll_class_emba')
+    @allure.step("JYZZ_school_roll_class_emba")
+    def test_school_roll_class(self, get_JYZZ_param, get_sql_server, get_emba_token):
+        """
+            开课班级，数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，EMBA账号
+        """
+        token, none_data01, none_data02 = get_emba_token
+        host = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('school_roll_class_url')
+        school_roll_class_data = get_JYZZ_param.get('data').get('school_roll_class_data')
+        data_list = []
+        [data_list.append(k + '=' + str(v)) for k, v in school_roll_class_data.items()]
+        case = random.choice(['班', '测试'])
+        url = host + '&'.join(data_list) + case
+        header = {'authorization': token}
+        r = request.get_request(url=url, header=header)
+        sql = "select * from GSMSchoolRollClass where PageType = 'emba' and StudendtClassName like '%{}%'".format(case)
+        get_sql_server.execute(sql)
+        sql_result = arr_sql_param(sql_title=arr_sql_title(get_sql_server.description), sql_data_list=get_sql_server.fetchall())
+        log.info('Response:%s\nSql Result:%s' % (r, sql_result))
+        class_info_list = r.get('body').get('data')
+        random_school_class_info = random.choice(class_info_list)
+        assert_dict['startClassName'] = random_school_class_info.get('studendtClassName')
+        assert_dict['startClassId'] = random_school_class_info.get('id')
+        # print(class_info_list)
+        # print(sql_result)
+        with allure.step('校验结果'):
+            allure.attach(str(class_info_list), '实际结果')
+            allure.attach('含有“%s”关键词' % case, '预期结果')
+        test.assert_code(r.get('body').get('statusCode'), 200)
+        for rsp_num in range(len(class_info_list)):
+            test.assert_in_text(class_info_list[rsp_num].get('studendtClassName'), case)
+            # for rsp_k, rsp_v in class_info_list[rsp_num].items():
+            #     for sql_k, sql_v in sql_result[rsp_num].items():
+            #         if rsp_v.casefold() == sql_v.casefold():
+            #             test.assert_text(str(rsp_v).split('.')[0], str(sql_v).split('.')[0])
+        # for class_info in class_info_list:
+        #     test.assert_in_text(class_info.get('studendtClassName'), case)
+
+    @allure.title('讲义制作-开课班级-ExEd')
+    @allure.feature('JYZZ_school_roll_class_exed')
+    @allure.severity('critical')
+    @allure.story('JYZZ_school_roll_class_exed')
+    @allure.step("JYZZ_school_roll_class_exed")
+    def test_school_roll_class_exed(self, get_JYZZ_param, get_sql_server):
+        """
+            开课班级，数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，ExEd账号
+        """
         host = get_JYZZ_param.get('url') + get_JYZZ_param.get('data').get('school_roll_class_url')
         school_roll_class_data = get_JYZZ_param.get('data').get('school_roll_class_data')
         data_list = []

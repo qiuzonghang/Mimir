@@ -193,7 +193,7 @@ def get_access_token(username, password, env):
 
     run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
     if run_type is False:      # 检查token是否正确
-        dr = base.start_dr(url=re.sub('api', '', url), driver_name='firefox')   # open chrome
+        dr = base.start_dr(url=re.sub('api', '', url), driver_name='chrome')   # open chrome
         base.user_login(username, password)     # login
         time.sleep(10)
         for request in dr.requests:     # 登录后获取token

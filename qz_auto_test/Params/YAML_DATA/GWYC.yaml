@@ -21,3 +21,16 @@ GWYC:
           id: 0
           moblie: ''
           status: '1'
+      get_list_url: /api/GSMOfficialVehiclesApply/Search
+      get_list_data:
+          conModels: []
+          pageNo: 0
+          pageSize: 10
+          queryTest: ''
+          type: 'Manage'
+      get_my_dealt_url: /api/GSMProess?
+      get_my_dealt_data:
+          pageNo: 0
+          pageSize: 10
+          queryText: ''
+          flag: 0

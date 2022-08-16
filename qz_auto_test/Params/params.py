@@ -56,6 +56,27 @@ def check_sort(results):
     return True
 
 
+def arr_sql_param(sql_title, sql_data_list):
+    arr_result = []
+    try:
+        for sql_data in sql_data_list:
+            arr_dict = {}
+            for sql_num in range(len(sql_data)):
+                arr_dict[sql_title[sql_num]] = sql_data[sql_num]
+            arr_result.append(arr_dict)
+        return arr_result
+    except TypeError:
+        arr_dict = {}
+        for sql_num in range(len(sql_data_list)):
+            arr_dict[sql_title[sql_num]] = sql_data_list[sql_num]
+        return arr_dict
+
+
+def arr_sql_title(sql_title):
+    sql_title_list = []
+    [sql_title_list.append(title[0]) for title in sql_title]
+    return sql_title_list
+
 # def get_user_info(username_text, token, host):
 #     url = 'https://' + host + '/api/GSMHRUserInfos/Search'
 #     data = {"pageNo": 0, "pageSize": 10, "queryText": username_text}

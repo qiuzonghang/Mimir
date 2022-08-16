@@ -12,20 +12,20 @@ import os
 import pymssql
 
 conf = Config()
-env = 'uat'
+env = 'dev'
 if env == 'dev':
-    username = conf.tester3_username_dev
+    username = conf.tester3_username_dev        # ExEd
     password = conf.tester3_password_dev
-    username_emba = conf.wangye_username_dev
+    username_emba = conf.wangye_username_dev    # EMBA
     password_emba = conf.wangye_password_dev
     sql_server_host = conf.sql_server_host_dev
     sql_server_database = conf.sql_server_database_dev
     sql_server_username = conf.sql_server_username_dev
     sql_server_password = conf.sql_server_password_dev
 elif env == 'uat':
-    username = conf.ITtest2_username_uat
+    username = conf.ITtest2_username_uat    # ExEd
     password = conf.ITtest2_password_uat
-    username_emba = conf.ITtest3_username_uat
+    username_emba = conf.ITtest3_username_uat   # EMBA
     password_emba = conf.ITtest3_password_uat
     sql_server_host = conf.sql_server_host_uat
     sql_server_database = conf.sql_server_database_uat

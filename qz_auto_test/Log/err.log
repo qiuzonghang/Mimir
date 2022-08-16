@@ -45,3 +45,42 @@
 [ERROR 2022-08-15 16:50:52]Response body != expected_msg, expected_msg is 2022-08-15 16:50, body is 2022-08-15 16:15
 [ERROR 2022-08-15 17:02:36]Response body != expected_msg, expected_msg is 测试2号的公务用车申请, body is ITtest2的公务用车申请
 [ERROR 2022-08-15 17:07:34]Response body != expected_msg, expected_msg is ittest2@gsm.pku.edu.cn, body is ITTest2@gsm.pku.edu.cn
+[ERROR 2022-08-16 10:49:28]Response body != expected_msg, expected_msg is 135, body is 135
+[ERROR 2022-08-16 10:49:52]Response body != expected_msg, expected_msg is 2022-08-15 16:48:01.073000, body is 2022-08-15 16:48:01
+[ERROR 2022-08-16 10:51:36]Response body != expected_msg, expected_msg is 90, body is 90.0
+[ERROR 2022-08-16 10:53:42]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 11:06:33]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 11:22:56]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 11:52:55]元素定位超时！
+[ERROR 2022-08-16 11:54:43]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 11:54:44]Response expected_msg != body != sql_data, expected_msg is 141, body is 1254, sql_data is 1254
+[ERROR 2022-08-16 13:35:47]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 13:35:48]Response expected_msg != body != sql_data, expected_msg is 142, body is 142, sql_data is 142
+[ERROR 2022-08-16 13:36:20]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 13:36:21]Response body != expected_msg, expected_msg is 1253, body is 1252
+[ERROR 2022-08-16 13:37:25]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 13:37:26]Response body != expected_msg, expected_msg is 1253, body is 1252
+[ERROR 2022-08-16 13:49:56]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 13:49:57]Response body != expected_msg, expected_msg is 40, body is 33
+[ERROR 2022-08-16 13:53:12]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 14:02:10]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 14:03:00]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 14:03:52]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 14:40:16]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:00:03]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:00:33]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:01:40]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:23:10]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:24:08]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:24:50]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 15:29:46]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 17:30:55]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn
+[ERROR 2022-08-16 17:41:43]Response body Does not contain expected_msg, expected_msg is 工商管理, body is ['企业决策与战略管理', '谈判与冲突管理', '运作管理']
+[ERROR 2022-08-16 17:46:52]Response body Does not contain expected_msg, expected_msg is 工商管理, body is ['企业决策与战略管理', '谈判与冲突管理', '运作管理']
+[ERROR 2022-08-16 17:47:42]Response body Does not contain expected_msg, expected_msg is ['企业决策与战略管理', '谈判与冲突管理', '运作管理'], body is 工商管理
+[ERROR 2022-08-16 17:48:31]Response body Does not contain expected_msg, expected_msg is ['企业决策与战略管理', '谈判与冲突管理', '运作管理'], body is 工商管理
+[ERROR 2022-08-16 17:51:46]Response body Does not contain expected_msg, expected_msg is ['企业决策与战略管理', '谈判与冲突管理', '运作管理'], body is 工商管理
+[ERROR 2022-08-16 17:54:10]Response body Does not contain expected_msg, expected_msg is [None, None, None, None, None, None, None], body is 工商管理
+[ERROR 2022-08-16 17:57:31]Response body Does not contain expected_msg, expected_msg is [None], body is 工商管理
+[ERROR 2022-08-16 18:23:02]Response body != expected_msg, expected_msg is 22, body is 44
+[ERROR 2022-08-16 18:24:21]Response body != expected_msg, expected_msg is 36, body is 48
