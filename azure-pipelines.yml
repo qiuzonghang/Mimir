@@ -20,6 +20,7 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
+    pip list
     python qz_auto_test/run.py
   displayName: 'start case'
 
