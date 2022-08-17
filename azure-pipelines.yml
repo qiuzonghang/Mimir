@@ -20,11 +20,6 @@ steps:
   displayName: 'Use Python $(python.version)'
 
 - script: |
-    python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+    python qz_auto_test/run.py
+  displayName: 'start case'
 
-- script: |
-    pip install pytest pytest-azurepipelines
-    pytest
-  displayName: 'pytest'
