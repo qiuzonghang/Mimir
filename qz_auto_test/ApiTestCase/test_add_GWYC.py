@@ -4,10 +4,10 @@
 # @File   : test_add_GWYC.py
 import random
 
-from Mimir.qz_auto_test.Common.Request import Request
-from Mimir.qz_auto_test.Common.Log import MyLog
-from Mimir.qz_auto_test.Common.Assert import Assertions
-from Mimir.qz_auto_test.Params.params import arr_sql_param, arr_sql_title
+from qz_auto_test.Common.Request import Request
+from qz_auto_test.Common.Log import MyLog
+from qz_auto_test.Common.Assert import Assertions
+from qz_auto_test.Params.params import arr_sql_param, arr_sql_title
 import allure
 import pytest
 import uuid

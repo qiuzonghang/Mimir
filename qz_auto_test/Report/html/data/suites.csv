@@ -1,10 +1,20 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Mon Aug 15 17:21:51 CST 2022","Mon Aug 15 17:22:53 CST 2022","62604","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-check邮件","
-            校验新增公务用车后是否会发送邮件，依赖 test_apply case 创建
+"passed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:41 CST 2022","208","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取管理端工单列表","
+            校验管理端工单列表，依赖test_apply case 创建，验证数据库、test_apply工单号、排序等
         "
-"passed","Mon Aug 15 17:21:50 CST 2022","Mon Aug 15 17:21:51 CST 2022","121","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取user信息","
+"passed","Wed Aug 17 18:11:42 CST 2022","Wed Aug 17 18:11:42 CST 2022","492","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-无待办明细","
+            （无数据）获取待办审核明细、申请信息、审核日志，校验数据库
+        "
+"passed","Wed Aug 17 18:11:40 CST 2022","Wed Aug 17 18:11:41 CST 2022","254","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取user信息","
             数据依赖，校验关键词结果
         "
-"passed","Mon Aug 15 17:21:51 CST 2022","Mon Aug 15 17:21:51 CST 2022","123","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-发起工单","
+"passed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:41 CST 2022","368","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-发起工单","
             校验新增公务用车，依赖 test_user_info case信息
+        "
+"passed","Wed Aug 17 18:11:42 CST 2022","Wed Aug 17 18:11:42 CST 2022","1","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-我的待办保存明细",""
+"failed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:41 CST 2022","71","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-check邮件","
+            校验新增公务用车后是否会发送邮件，依赖 test_apply case 创建，发送邮件会有延迟，验证时会有60s等待时间
+        "
+"passed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:42 CST 2022","254","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-我的待办","
+            校验工单是否发送我的待办，验证待办数据+数据库数据+test_apply创建工单是否一致
         "

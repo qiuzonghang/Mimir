@@ -3,12 +3,16 @@
 # @Author : qiuzonghang
 # @File   : conftest.py
 
-from Mimir.qz_auto_test.Params.params import get_param_data
-from qz_auto_test.Common.Func import remove_dir
-from Mimir.qz_auto_test.Conf.Config import Config
-from Mimir.qz_auto_test.Common.Func import get_access_token
-import pytest
+import sys
 import os
+import re
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "../..")))
+sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+from qz_auto_test.Params.params import get_param_data
+from qz_auto_test.Common.Func import remove_dir
+from qz_auto_test.Conf.Config import Config
+from qz_auto_test.Common.Func import get_access_token
+import pytest
 import pymssql
 
 conf = Config()
@@ -57,3 +61,6 @@ def get_sql_server():
     conn.commit()
     cur.close()
     conn.close()
+
+
+# print(sys.path)

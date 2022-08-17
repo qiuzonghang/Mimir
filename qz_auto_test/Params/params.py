@@ -4,11 +4,11 @@
 # @File   : params.py
 import random
 
-from Mimir.qz_auto_test.Common.Func import get_access_token, read_txt, project_path
-from Mimir.qz_auto_test.Common.Log import MyLog
-from Mimir.qz_auto_test.Conf.Config import Config
-from Mimir.qz_auto_test.Params.get_yaml import GetPages
-from Mimir.qz_auto_test.Common.Request import Request
+from qz_auto_test.Common.Func import get_access_token, read_txt, project_path
+from qz_auto_test.Common.Log import MyLog
+from qz_auto_test.Conf.Config import Config
+from qz_auto_test.Params.get_yaml import GetPages
+from qz_auto_test.Common.Request import Request
 import time
 import requests
 import re
@@ -76,6 +76,14 @@ def arr_sql_title(sql_title):
     sql_title_list = []
     [sql_title_list.append(title[0]) for title in sql_title]
     return sql_title_list
+
+
+def param_id_desc(list_data):
+    for num1 in range(len(list_data)):
+        for num2 in range(len(list_data)-num1-1):
+            if list_data[num2]['id'] < list_data[num2+1]['id']:
+                list_data[num2], list_data[num2+1] = list_data[num2+1], list_data[num2]
+    return list_data
 
 # def get_user_info(username_text, token, host):
 #     url = 'https://' + host + '/api/GSMHRUserInfos/Search'

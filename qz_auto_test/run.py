@@ -4,11 +4,17 @@
 # @File   : run.py
 
 import pytest
+import sys
 import os
+# curPath = os.path.abspath(os.path.dirname(__file__))
+# rootPath = os.path.split(curPath)[0]
+# sys.path.append(rootPath)
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "../..")))
+sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 
-from Mimir.qz_auto_test.Common import Log, Shell
-from Mimir.qz_auto_test.Conf import Config
-from Mimir.qz_auto_test.Common.Func import remove_dir
+from qz_auto_test.Common import Log, Shell
+from qz_auto_test.Conf import Config
+from qz_auto_test.Common.Func import remove_dir
 
 if __name__ == '__main__':
     conf = Config.Config()

@@ -1,0 +1,2 @@
+[32mINFO    [0m root:Log.py:70 [INFO 2022-08-17 18:11:41](2292, datetime.datetime(2022, 8, 17, 18, 11, 41, 323000), None, 'qzh@qintelligence.cn', '李易峰tester3的公务用车申请', "<span style ='font - family:Calibri'><p>李易峰tester3的公务用车申请GWYC20220167已提交，请登录平台“我的待办”下补充相关信息并确认。</p></span>", 0, 'gsmittest@gsm.pku.edu.cn')
+[1m[31mERROR   [0m root:Log.py:82 [ERROR 2022-08-17 18:11:41]Response body != expected_msg, expected_msg is tester3@qynet.onmicrosoft.com, body is qzh@qintelligence.cn

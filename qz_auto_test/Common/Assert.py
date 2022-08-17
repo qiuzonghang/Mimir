@@ -3,8 +3,8 @@
 # @Author : qiuzonghang
 # @File   : Assert.py
 
-from Mimir.qz_auto_test.Common import Log
-from Mimir.qz_auto_test.Common import Consts
+from qz_auto_test.Common import Log
+from qz_auto_test.Common import Consts
 import json
 
 
