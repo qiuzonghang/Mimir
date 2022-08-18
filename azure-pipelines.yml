@@ -21,7 +21,6 @@ steps:
 
 - script: |
     python -m pip install -r requirements.txt
-    pip list
     python qz_auto_test/run.py
   displayName: 'start case'
 

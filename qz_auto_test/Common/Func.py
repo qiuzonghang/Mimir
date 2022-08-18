@@ -13,6 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from seleniumwire import webdriver
 from qz_auto_test.Conf.Config import Config
+from qz_auto_test.Params.get_yaml import GetPages
 import os
 import requests
 import re
@@ -22,6 +23,7 @@ log = MyLog()
 project_path = os.path.abspath(os.path.dirname(
                                  os.path.dirname(__file__)))
 conf = Config()
+get_data = GetPages()
 
 
 class Driver:
@@ -172,7 +174,7 @@ def check_token(access_token, user, host):
 
 
 # 登录token获取
-def get_access_token(username, password, env):
+def get_access_token(username, password, env, get_mode='api'):
     """
     :param username:    # 登录用户名
     :param password:    # 用户密码
@@ -193,16 +195,29 @@ def get_access_token(username, password, env):
 
     run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
     if run_type is False:      # 检查token是否正确
-        dr = base.start_dr(url=re.sub('api', '', url), driver_name='chrome')   # open chrome
-        base.user_login(username, password)     # login
-        time.sleep(10)
-        for request in dr.requests:     # 登录后获取token
-            if request.response:
-                if 'Bearer' in str(request.headers['authorization']):
-                    write_txt(str(request.headers['authorization']), user_name=username, env=env)
-                    break
-        log.info('获取token，退出浏览器...')
-        dr.quit()
+        if get_mode == 'web':
+            dr = base.start_dr(url=re.sub('api', '', url), driver_name='chrome')   # open chrome
+            base.user_login(username, password)     # login
+            time.sleep(10)
+            for request in dr.requests:     # 登录后获取token
+                if request.response:
+                    if 'Bearer' in str(request.headers['authorization']):
+                        write_txt(str(request.headers['authorization']), user_name=username, env=env)
+                        break
+            log.info('获取token，退出浏览器...')
+            dr.quit()
+        elif get_mode == 'api':
+            token_param = get_data.get_page_list()['Token'][0]
+            token_url = token_param['token_url']
+            token_data = token_param[env + '_token_data']
+            token_data['username'] = username
+            token_data['password'] = password
+            r = requests.post(url=token_url, data=token_data)
+            if r.status_code != 200:
+                raise
+            else:
+                token_response = r.json()
+                write_txt('%s %s' % (token_response.get('token_type'), token_response.get('access_token')), user_name=username, env=env)
         run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
         if run_type:   # 登录后获取的token是否正确
             return re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), host, user_info
@@ -219,4 +234,3 @@ def remove_dir(filepath):
     else:
         shutil.rmtree(filepath)
         os.mkdir(filepath)
-
