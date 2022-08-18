@@ -1,0 +1,13 @@
+---
+Token:
+  dec: "token"
+  parameters:
+    -
+      token_url: https://login.microsoftonline.com/15e34f9e-11b7-4eb8-9078-a6972f9c5292/oauth2/v2.0/token
+      dev_token_data:
+           grant_type: 'password'
+           client_id: '1febebc3-262e-45c8-95c6-b37c39eda4b6'
+           client_secret: 'dNR8Q~L4tZw_jjjCJsg5andhU4QnDvgY491AXbI2'
+           scope: 'openid profile email api://1febebc3-262e-45c8-95c6-b37c39eda4b6/access_as_user'
+           username: 'wangye@qynet.onmicrosoft.com'
+           password: 'Welcome@1'
