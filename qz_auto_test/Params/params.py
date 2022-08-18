@@ -78,24 +78,10 @@ def arr_sql_title(sql_title):
     return sql_title_list
 
 
-def param_id_desc(list_data):
+def param_id_desc(list_data, sort_param='id'):
     for num1 in range(len(list_data)):
         for num2 in range(len(list_data)-num1-1):
-            if list_data[num2]['id'] < list_data[num2+1]['id']:
+            if list_data[num2][sort_param] < list_data[num2+1][sort_param]:
                 list_data[num2], list_data[num2+1] = list_data[num2+1], list_data[num2]
     return list_data
 
-# def get_user_info(username_text, token, host):
-#     url = 'https://' + host + '/api/GSMHRUserInfos/Search'
-#     data = {"pageNo": 0, "pageSize": 10, "queryText": username_text}
-#     r = request.post_request(url=url, data=data, token=token)
-#     user_dt = random.choice(r.get('body').get('data').get('data'))
-#     print(user_dt)
-#
-#
-# token, host, user_info = get_access_token(username=conf.wangye_username_dev, password=conf.wangye_password_dev, env='dev')
-# print(user_info)
-# print(get_user_info(username_text='王野', token=token, host=host))
-# print(check_sort(a))
-# parameter = get_param_data(uri_type='JYZZ', user='wangye@qynet.onmicrosoft.com', pw='Welcome@1')
-# print(parameter)

@@ -1,20 +1,54 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:41 CST 2022","208","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取管理端工单列表","
-            校验管理端工单列表，依赖test_apply case 创建，验证数据库、test_apply工单号、排序等
+"passed","Thu Aug 18 18:10:03 CST 2022","Thu Aug 18 18:10:03 CST 2022","208","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-我的待办","
+            校验工单是否发送我的待办，验证待办数据+数据库数据+test_apply创建工单是否一致
         "
-"passed","Wed Aug 17 18:11:42 CST 2022","Wed Aug 17 18:11:42 CST 2022","492","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-无待办明细","
+"passed","Thu Aug 18 18:09:50 CST 2022","Thu Aug 18 18:09:54 CST 2022","4308","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-新建讲义-EMBA","
+            校验ExEd部门新增讲义制作，判断statusCode、数据库
+        "
+"passed","Thu Aug 18 18:10:03 CST 2022","Thu Aug 18 18:10:03 CST 2022","348","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-无待办明细","
             （无数据）获取待办审核明细、申请信息、审核日志，校验数据库
         "
-"passed","Wed Aug 17 18:11:40 CST 2022","Wed Aug 17 18:11:41 CST 2022","254","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取user信息","
-            数据依赖，校验关键词结果
+"passed","Thu Aug 18 18:10:01 CST 2022","Thu Aug 18 18:10:01 CST 2022","197","ApiTestCase","test_JYZZ_setting","TestCase","","","讲义制作-删除纸张克重定义",""
+"passed","Thu Aug 18 18:09:59 CST 2022","Thu Aug 18 18:09:59 CST 2022","226","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-讲义管理列表","
+            获取管理端讲义列表，校验statusCode、数据库、test_apply添加
         "
-"passed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:41 CST 2022","368","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-发起工单","
-            校验新增公务用车，依赖 test_user_info case信息
+"passed","Thu Aug 18 18:10:00 CST 2022","Thu Aug 18 18:10:00 CST 2022","225","ApiTestCase","test_JYZZ_setting","TestCase","","","讲义制作-新增纸张克重定义","
+            新增纸张克重，校验数据库、statusCode。数据依赖
         "
-"passed","Wed Aug 17 18:11:42 CST 2022","Wed Aug 17 18:11:42 CST 2022","1","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-我的待办保存明细",""
-"failed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:41 CST 2022","71","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-check邮件","
+"failed","Thu Aug 18 18:10:02 CST 2022","Thu Aug 18 18:10:02 CST 2022","68","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-check邮件","
             校验新增公务用车后是否会发送邮件，依赖 test_apply case 创建，发送邮件会有延迟，验证时会有60s等待时间
         "
-"passed","Wed Aug 17 18:11:41 CST 2022","Wed Aug 17 18:11:42 CST 2022","254","qz_auto_test.ApiTestCase","test_add_GWYC","TestCase","","","公务用车-我的待办","
-            校验工单是否发送我的待办，验证待办数据+数据库数据+test_apply创建工单是否一致
+"passed","Thu Aug 18 18:10:00 CST 2022","Thu Aug 18 18:10:01 CST 2022","204","ApiTestCase","test_JYZZ_setting","TestCase","","","讲义制作-编辑纸张克重定义","
+            修改纸张克重定义，校验数据库、statusCode
+        "
+"passed","Thu Aug 18 18:09:50 CST 2022","Thu Aug 18 18:09:50 CST 2022","238","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-课程名称-ExEd","
+            课程名称，数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，ExEd账号
+        "
+"passed","Thu Aug 18 18:10:01 CST 2022","Thu Aug 18 18:10:02 CST 2022","505","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取user信息","
+            数据依赖，校验关键词结果
+        "
+"passed","Thu Aug 18 18:10:03 CST 2022","Thu Aug 18 18:10:03 CST 2022","0","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-我的待办保存明细",""
+"passed","Thu Aug 18 18:09:54 CST 2022","Thu Aug 18 18:09:59 CST 2022","4207","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-新建讲义-ExEd","
+            校验ExEd部门新增讲义制作，判断statusCode、数据库
+        "
+"passed","Thu Aug 18 18:09:49 CST 2022","Thu Aug 18 18:09:50 CST 2022","240","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-课程名称-EMBA","
+            课程名称，数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，EMBA账号
+        "
+"passed","Thu Aug 18 18:09:59 CST 2022","Thu Aug 18 18:09:59 CST 2022","309","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-讲义列表","
+            获取当前账号已添加讲义列表，校验statusCode、数据库、test_apply添加
+        "
+"passed","Thu Aug 18 18:09:50 CST 2022","Thu Aug 18 18:09:50 CST 2022","220","ApiTestCase","test_JYZZ_ApiTest","TestCase","","","讲义制作-开课班级-EMBA","
+            开课班级，数据依赖，用于test_apply创建讲义，校验关键词并对比数据库，EMBA账号
+        "
+"passed","Thu Aug 18 18:10:00 CST 2022","Thu Aug 18 18:10:00 CST 2022","193","ApiTestCase","test_JYZZ_setting","TestCase","","","讲义制作-获取纸张克重定义","
+            查询纸张克重定义数据，校验数据库、statusCode、add_paper_weight数据
+        :param get_JYZZ_param:
+        :param get_sql_server:
+        :return:
+        "
+"passed","Thu Aug 18 18:10:03 CST 2022","Thu Aug 18 18:10:03 CST 2022","210","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-获取管理端工单列表","
+            校验管理端工单列表，依赖test_apply case 创建，验证数据库、test_apply工单号、排序等
+        "
+"passed","Thu Aug 18 18:10:02 CST 2022","Thu Aug 18 18:10:02 CST 2022","381","ApiTestCase","test_add_GWYC","TestCase","","","公务用车-发起工单","
+            校验新增公务用车，依赖 test_user_info case信息
         "

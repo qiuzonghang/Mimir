@@ -29,7 +29,7 @@ if __name__ == '__main__':
     remove_dir(xml_report_path)
     remove_dir(html_report_path)
     # 定义测试集
-    args = ['-s', '-v', '-m=GWYC', '--alluredir', xml_report_path]
+    args = ['-s', '-v', '-m=site', '--alluredir', xml_report_path]
     log.info('执行测试...')
     pytest.main(args)
     # 生成测试报告，将前提步骤中的xml文件生成报告保存在指定目录下

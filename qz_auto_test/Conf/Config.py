@@ -18,7 +18,7 @@ class Config:
     TITLE_USER_WANGYE_DEV = 'user_wangye_dev'
     TITLE_USER_ITTEST2_UAT = 'user_ITtest2_uat'
     TITLE_USER_ITTEST3_UAT = 'user_ITtest3_uat'
-    TITLE_USER_TESTER3_DEV = 'user_tester3_uat'
+    TITLE_USER_TESTER3_DEV = 'user_tester3_dev'
     TITLE_SQL_SERVER_DEV = 'sql_server_dev'
     TITLE_SQL_SERVER_UAT = 'sql_server_uat'
 

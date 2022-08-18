@@ -62,5 +62,3 @@ def get_sql_server():
     cur.close()
     conn.close()
 
-
-# print(sys.path)
