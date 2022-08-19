@@ -26,3 +26,8 @@ steps:
     python qz_auto_test/run.py
   displayName: 'start case'
 
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: 'qz_auto_test/Report/html'
+    cleanDestinationFolder: true
+    overwriteExistingFiles: false
