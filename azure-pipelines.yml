@@ -23,8 +23,6 @@ steps:
   displayName: 'Install requirements'
 
 - script: |
-    pip install pytest pytest-azurepipelines
-    pip install pytest-cov
-    pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
-  displayName: 'pytest'
+    python qz_auto_test/run.py
+  displayName: 'start case'
 
