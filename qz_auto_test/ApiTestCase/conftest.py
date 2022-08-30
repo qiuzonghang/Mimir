@@ -11,30 +11,12 @@ sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 from qz_auto_test.Params.params import get_param_data
 from qz_auto_test.Common.Func import remove_dir
 from qz_auto_test.Conf.Config import Config
-from qz_auto_test.Common.Func import get_access_token
+from qz_auto_test.Common.Func import get_access_token, get_conf_info
 import pytest
 import pymssql
 
-conf = Config()
-env = 'dev'
-if env == 'dev':
-    username = conf.tester3_username_dev        # ExEd
-    password = conf.tester3_password_dev
-    username_emba = conf.wangye_username_dev    # EMBA
-    password_emba = conf.wangye_password_dev
-    sql_server_host = conf.sql_server_host_dev
-    sql_server_database = conf.sql_server_database_dev
-    sql_server_username = conf.sql_server_username_dev
-    sql_server_password = conf.sql_server_password_dev
-elif env == 'uat':
-    username = conf.ITtest2_username_uat    # ExEd
-    password = conf.ITtest2_password_uat
-    username_emba = conf.ITtest3_username_uat   # EMBA
-    password_emba = conf.ITtest3_password_uat
-    sql_server_host = conf.sql_server_host_uat
-    sql_server_database = conf.sql_server_database_uat
-    sql_server_username = conf.sql_server_username_uat
-    sql_server_password = conf.sql_server_password_uat
+env = 'test'
+username, password, username_emba, password_emba, sql_server_host, sql_server_database, sql_server_username, sql_server_password = get_conf_info(env=env)
 
 
 @pytest.fixture(scope='class')

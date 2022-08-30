@@ -1,0 +1,20 @@
+---
+Leave:
+  dec: "职员请假"
+  parameters:
+    -
+      annual_leave_days_url: /api/GSMLMSAnnualLeaveDays/Manage
+      annual_leave_days_data:
+         orderBy: 10
+         pageNo: ''
+         sort: ''
+         queryText: ''
+         pageSize: 10
+         conModels:
+           - fieldName: 'years'
+             fieldValue: 2021
+             conditionalType: 0
+
+      init_annual_leave_days_url: /api/GSMLMSAnnualLeaveDays/InitGSMLMSAnnualLeaveDays?
+      init_annual_leave_days_data:
+        years: 10

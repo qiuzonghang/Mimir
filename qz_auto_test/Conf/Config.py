@@ -13,14 +13,15 @@ from qz_auto_test.Common import Log
 class Config:
     # titles:
     TITLE_DEV = "env_dev"
-    # TITLE_RELEASE = "online_release"
     TITLE_UAT = "env_uat"
+    TITLE_TEST = "env_test"
     TITLE_USER_WANGYE_DEV = 'user_wangye_dev'
     TITLE_USER_ITTEST2_UAT = 'user_ITtest2_uat'
     TITLE_USER_ITTEST3_UAT = 'user_ITtest3_uat'
     TITLE_USER_TESTER3_DEV = 'user_tester3_dev'
     TITLE_SQL_SERVER_DEV = 'sql_server_dev'
     TITLE_SQL_SERVER_UAT = 'sql_server_uat'
+    TITLE_SQL_SERVER_TEST = 'sql_server_test'
 
     # values:
     # [debug\release]
@@ -60,6 +61,11 @@ class Config:
         self.versionCode_uat = self.get_conf(Config.TITLE_UAT, Config.VALUE_VERSION_CODE)
         self.host_uat = self.get_conf(Config.TITLE_UAT, Config.VALUE_HOST)
 
+        self.tester_test = self.get_conf(Config.TITLE_TEST, Config.VALUE_TESTER)
+        self.environment_test = self.get_conf(Config.TITLE_TEST, Config.VALUE_ENVIRONMENT)
+        self.versionCode_test = self.get_conf(Config.TITLE_TEST, Config.VALUE_VERSION_CODE)
+        self.host_test = self.get_conf(Config.TITLE_TEST, Config.VALUE_HOST)
+
         self.wangye_username_dev = self.get_conf(Config.TITLE_USER_WANGYE_DEV, Config.VALUE_USERNAME)
         self.wangye_password_dev = self.get_conf(Config.TITLE_USER_WANGYE_DEV, Config.VALUE_PASSWORD)
         self.tester3_username_dev = self.get_conf(Config.TITLE_USER_TESTER3_DEV, Config.VALUE_USERNAME)
@@ -76,6 +82,10 @@ class Config:
         self.sql_server_database_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_DATABASE)
         self.sql_server_username_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_USERNAME)
         self.sql_server_password_uat = self.get_conf(Config.TITLE_SQL_SERVER_UAT, Config.VALUE_PASSWORD)
+        self.sql_server_host_test = self.get_conf(Config.TITLE_SQL_SERVER_TEST, Config.VALUE_HOST)
+        self.sql_server_database_test = self.get_conf(Config.TITLE_SQL_SERVER_TEST, Config.VALUE_DATABASE)
+        self.sql_server_username_test = self.get_conf(Config.TITLE_SQL_SERVER_TEST, Config.VALUE_USERNAME)
+        self.sql_server_password_test = self.get_conf(Config.TITLE_SQL_SERVER_TEST, Config.VALUE_PASSWORD)
 
     def get_conf(self, title, value):
         """

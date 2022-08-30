@@ -4,6 +4,7 @@
 # @File   : Func.py
 
 import time
+import zipfile
 
 import selenium.common.exceptions
 from selenium.webdriver.common.by import By
@@ -184,10 +185,13 @@ def get_access_token(username, password, env, get_mode='api'):
     """
     if env == 'dev':
         host = conf.host_dev
-        url = 'https://' + host + '/#/work'
+        web_url = 'https://' + host + '/#/work'
+    elif env == 'test':
+        host = conf.host_test
+        web_url = 'https://' + host + '/#/work'
     elif env == 'uat':
         host = conf.host_uat
-        url = 'https://' + host + '/#/work'
+        web_url = 'https://' + host + '/#/work'
     elif env == 'release':
         host = ''
     else:
@@ -196,7 +200,7 @@ def get_access_token(username, password, env, get_mode='api'):
     run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
     if run_type is False:      # 检查token是否正确
         if get_mode == 'web':
-            dr = base.start_dr(url=re.sub('api', '', url), driver_name='chrome')   # open chrome
+            dr = base.start_dr(url=re.sub('api', '', web_url), driver_name='chrome')   # open chrome
             base.user_login(username, password)     # login
             time.sleep(10)
             for request in dr.requests:     # 登录后获取token
@@ -206,10 +210,13 @@ def get_access_token(username, password, env, get_mode='api'):
                         break
             log.info('获取token，退出浏览器...')
             dr.quit()
-        elif get_mode == 'api':
+        elif get_mode == 'api':     # 仅支持 test&dev环境接口获取token
             token_param = get_data.get_page_list()['Token'][0]
             token_url = token_param['token_url']
-            token_data = token_param[env + '_token_data']
+            if env == 'dev' or env == 'test':
+                token_data = token_param['dev_token_data']
+            else:
+                raise
             token_data['username'] = username
             token_data['password'] = password
             r = requests.post(url=token_url, data=token_data)
@@ -234,3 +241,40 @@ def remove_dir(filepath):
     else:
         shutil.rmtree(filepath)
         os.mkdir(filepath)
+
+
+def zipDir(dirpath, outFullName):
+    zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
+    for path, dirnames, filenames in os.walk(dirpath):
+        # fpath = path.replace(dirpath, '')
+        for filename in filenames:
+            zip.write(os.path.join(path, filename), os.path.join(filename))
+    zip.close()
+
+
+def get_conf_info(env):
+    if env == 'dev' or env == 'test':
+        username = conf.tester3_username_dev  # ExEd
+        password = conf.tester3_password_dev
+        username_emba = conf.wangye_username_dev  # EMBA
+        password_emba = conf.wangye_password_dev
+        if env == 'dev':
+            sql_server_host = conf.sql_server_host_dev
+            sql_server_database = conf.sql_server_database_dev
+            sql_server_username = conf.sql_server_username_dev
+            sql_server_password = conf.sql_server_password_dev
+        elif env == 'test':
+            sql_server_host = conf.sql_server_host_test
+            sql_server_database = conf.sql_server_database_test
+            sql_server_username = conf.sql_server_username_test
+            sql_server_password = conf.sql_server_password_test
+    elif env == 'uat':
+        username = conf.ITtest2_username_uat  # ExEd
+        password = conf.ITtest2_password_uat
+        username_emba = conf.ITtest3_username_uat  # EMBA
+        password_emba = conf.ITtest3_password_uat
+        sql_server_host = conf.sql_server_host_uat
+        sql_server_database = conf.sql_server_database_uat
+        sql_server_username = conf.sql_server_username_uat
+        sql_server_password = conf.sql_server_password_uat
+    return (username, password, username_emba, password_emba, sql_server_host, sql_server_database, sql_server_username, sql_server_password)
