@@ -8,11 +8,14 @@ import zipfile
 
 import selenium.common.exceptions
 from selenium.webdriver.common.by import By
-# from selenium import webdriver
+from selenium import webdriver as wd
+from selenium.webdriver.chrome.service import Service as chromeService
+from selenium.webdriver.firefox.service import Service as firefoxService
+from selenium.webdriver.edge.service import Service as edgeService
 from qz_auto_test.Common.Log import MyLog
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from seleniumwire import webdriver
+from seleniumwire import webdriver as wd_wire
 from qz_auto_test.Conf.Config import Config
 from qz_auto_test.Params.get_yaml import GetPages
 import os
@@ -35,20 +38,37 @@ class Driver:
         self.sign_in = (By.XPATH, '//*[@id="idSIButton9"]')
         self.whether = (By.ID, 'idBtn_Back')
 
-    def start_dr(self, url, driver_name, over_time=30):
+    def start_dr(self, url, driver_name, over_time=30, type='api'):
         """
         :param url:     # 登录网址
         :param driver_name:     # 需要调用的浏览器（chrome/firefox)
         :return:
         """
-        if driver_name == 'chrome':
-            self.dr = webdriver.Chrome()
-            log.info('open chrome...')
-        elif driver_name == 'firefox':
-            self.dr = webdriver.Firefox()
-            log.info('open firefox')
+        if type == 'api':
+            if driver_name == 'chrome':
+                self.dr = wd_wire.Chrome()
+                log.info('open chrome...')
+            elif driver_name == 'firefox':
+                self.dr = wd_wire.Firefox()
+                log.info('open firefox')
+            else:
+                log.error('api框架目前仅支持Chrome/Firefox')
+                raise
+        elif type == 'web':
+            driver_path = os.path.abspath(os.path.join(os.getcwd(), "..")) + '/WebDriver/'
+            if driver_name == 'chrome':
+                self.dr = wd.Chrome(service=chromeService(driver_path + 'chromedriver.exe'))
+                log.info('open chrome...')
+            elif driver_name == 'firefox':
+                self.dr = wd.Firefox(service=firefoxService(driver_path + 'geckodriver.exe'))
+                log.info('open firefox')
+            elif driver_name == 'edge':
+                self.dr = wd.Edge(service=edgeService(driver_path + 'msedgedriver.exe'))
+            else:
+                log.error('web框架目前仅支持Chrome/Firefox/Edge')
+                raise
         else:
-            log.error('目前仅支持Chrome/Firefox')
+            log.error('请正确填写应用框架api/web')
             raise
         self.dr.get(url)
         self.dr.maximize_window()
@@ -73,7 +93,7 @@ class Driver:
     def base_click(self, loc):
         log.info("正在对:{} 元素实行点击事件".format(loc))
         el = self.base_find(loc)
-        time.sleep(3)
+        # time.sleep(3)
         el.click()
 
     # 输入元素方法
@@ -99,7 +119,6 @@ class Driver:
         self.base_click(loc=self.whether)
 
 
-base = Driver()
 
 """
 class LoginClass:
@@ -183,6 +202,7 @@ def get_access_token(username, password, env, get_mode='api'):
     :param env:     # 登录环境
     :return:    # 返回token+host
     """
+    base = Driver()
     if env == 'dev':
         host = conf.host_dev
         web_url = 'https://' + host + '/#/work'
@@ -278,3 +298,11 @@ def get_conf_info(env):
         sql_server_username = conf.sql_server_username_uat
         sql_server_password = conf.sql_server_password_uat
     return (username, password, username_emba, password_emba, sql_server_host, sql_server_database, sql_server_username, sql_server_password)
+
+
+base = Driver()
+
+test = base.start_dr(url='http://www.baidu.com', driver_name='firefox', type='web')
+time.sleep(3)
+test.quit()
+
