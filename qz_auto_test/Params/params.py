@@ -80,8 +80,10 @@ def arr_sql_title(sql_title):
 
 def param_id_desc(list_data, sort_param='id'):
     for num1 in range(len(list_data)):
-        for num2 in range(len(list_data)-num1-1):
-            if list_data[num2][sort_param] < list_data[num2+1][sort_param]:
-                list_data[num2], list_data[num2+1] = list_data[num2+1], list_data[num2]
+        for num2 in range(len(list_data) - num1 - 1):
+            if list_data[num2][sort_param] < list_data[num2 + 1][sort_param]:
+                list_data[num2], list_data[num2 + 1] = list_data[num2 + 1], list_data[num2]
     return list_data
 
+
+# print(get_access_token(username='tester3@qynet.onmicrosoft.com', password='Qz123456.', env='test'))

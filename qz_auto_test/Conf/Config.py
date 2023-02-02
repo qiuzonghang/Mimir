@@ -18,10 +18,11 @@ class Config:
     TITLE_USER_WANGYE_DEV = 'user_wangye_dev'
     TITLE_USER_ITTEST2_UAT = 'user_ITtest2_uat'
     TITLE_USER_ITTEST3_UAT = 'user_ITtest3_uat'
-    TITLE_USER_TESTER3_DEV = 'user_tester3_dev'
+    TITLE_USER_TESTER3_DEV = 'user_vikings_dev'
     TITLE_SQL_SERVER_DEV = 'sql_server_dev'
     TITLE_SQL_SERVER_UAT = 'sql_server_uat'
     TITLE_SQL_SERVER_TEST = 'sql_server_test'
+    TITLE_TEST_APPLY = 'test_apply'
 
     # values:
     # [debug\release]
@@ -50,6 +51,8 @@ class Config:
             raise FileNotFoundError("请确保配置文件存在！")
 
         self.config.read(self.conf_path, encoding='utf-8')
+
+        self.test_apply_host = self.get_conf(Config.TITLE_TEST_APPLY, Config.VALUE_HOST)
 
         self.tester_dev = self.get_conf(Config.TITLE_DEV, Config.VALUE_TESTER)
         self.environment_dev = self.get_conf(Config.TITLE_DEV, Config.VALUE_ENVIRONMENT)

@@ -61,9 +61,10 @@ class Driver:
                 log.info('open chrome...')
             elif driver_name == 'firefox':
                 self.dr = wd.Firefox(service=firefoxService(driver_path + 'geckodriver.exe'))
-                log.info('open firefox')
+                log.info('open firefox...')
             elif driver_name == 'edge':
                 self.dr = wd.Edge(service=edgeService(driver_path + 'msedgedriver.exe'))
+                log.info('open edge...')
             else:
                 log.error('web框架目前仅支持Chrome/Firefox/Edge')
                 raise
@@ -112,12 +113,13 @@ class Driver:
     # 登录
     def user_login(self, username, password):
         self.base_input(loc=self.username, value=username)
+        time.sleep(3)
         self.base_click(loc=self.username_next)
+        time.sleep(3)
         self.base_input(loc=self.password, value=password)
         time.sleep(3)
         self.base_click(loc=self.sign_in)
         self.base_click(loc=self.whether)
-
 
 
 """
@@ -183,7 +185,9 @@ def check_token(access_token, user, host):
     """
     url = 'https://' + host + '/api/user/info'
     header = {'authorization': access_token}
+    print(header)
     r = requests.get(url=url, headers=header)
+    print(r.json())
     try:
         if r.status_code == 200 and r.json().get('data').get('email').casefold() == user.casefold():
             return True, r.json()
@@ -246,6 +250,7 @@ def get_access_token(username, password, env, get_mode='api'):
                 token_response = r.json()
                 write_txt('%s %s' % (token_response.get('token_type'), token_response.get('access_token')), user_name=username, env=env)
         run_type, user_info = check_token(re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), username, host)
+        print(run_type)
         if run_type:   # 登录后获取的token是否正确
             return re.sub('\n', '', read_txt(user_name=username, env=env)[-1]), host, user_info
         else:
@@ -300,9 +305,10 @@ def get_conf_info(env):
     return (username, password, username_emba, password_emba, sql_server_host, sql_server_database, sql_server_username, sql_server_password)
 
 
-base = Driver()
-
-test = base.start_dr(url='http://www.baidu.com', driver_name='firefox', type='web')
-time.sleep(3)
-test.quit()
+# base = Driver()
+# test = base.start_dr(url='https://testsite.qintelligence.cn/#/work', driver_name='edge', type='web')
+# user_info = get_conf_info(env='test')
+# base.user_login(username=user_info[2], password=user_info[3])
+# time.sleep(10)
+# test.quit()
 
